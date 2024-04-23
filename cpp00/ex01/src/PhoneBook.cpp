@@ -6,7 +6,15 @@
 /*   By: vbartos <vbartos@student.42prague.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 14:48:47 by vbartos           #+#    #+#             */
-/*   Updated: 2024/04/22 14:48:53 by vbartos          ###   ########.fr       */
+/*   Updated: 2024/04/23 16:37:11 by vbartos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+class PhoneBook
+{
+	public:
+		PhoneBook();
+
+	private:
+	
+}

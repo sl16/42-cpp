@@ -6,7 +6,7 @@
 #    By: vbartos <vbartos@student.42prague.com>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/19 23:00:29 by vbartos           #+#    #+#              #
-#    Updated: 2024/04/22 14:46:20 by vbartos          ###   ########.fr        #
+#    Updated: 2024/04/23 13:00:45 by vbartos          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,7 @@ RM				= rm -rf
 # SOURCE FILES ----------------------------- #
 
 SRC_PATH		= src/
-SRC				= megaphone.cpp
+SRC				= main.cpp
 SRCS			= $(addprefix $(SRC_PATH), $(SRC))
 
 # OBJECT FILES ----------------------------- #
