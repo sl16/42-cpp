@@ -6,17 +6,19 @@
 /*   By: vbartos <vbartos@student.42prague.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 14:47:39 by vbartos           #+#    #+#             */
-/*   Updated: 2024/04/23 16:38:18 by vbartos          ###   ########.fr       */
+/*   Updated: 2024/04/25 15:53:57 by vbartos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #define GREEN   "\033[32m"
 #define RESET   "\033[0m"
 
-#include <iostream>
+#include "../inc/Contact.hpp"
+#include "../inc/PhoneBook.hpp"
 
 int main(void)
 {
+	PhoneBook phonebook;
 	std::string	cmd;
 	
 	std::cout << std::endl;
@@ -31,10 +33,10 @@ int main(void)
 	{
 		std::cout << "Enter command:" << std::endl;
 		std::cin >> cmd;
-		if (cmd == "ADD");
-		// add functionality
-		else if (cmd == "SEARCH");
-		// add functionality
+		if (cmd == "ADD")
+			phonebook.add();
+		else if (cmd == "SEARCH")
+			phonebook.search();
 		else if (cmd == "EXIT")
 			break;
 		else
