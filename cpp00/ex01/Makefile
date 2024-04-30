@@ -29,7 +29,9 @@ RM				= rm -rf
 # SOURCE FILES ----------------------------- #
 
 SRC_PATH		= src/
-SRC				= main.cpp
+SRC				= main.cpp \
+					PhoneBook.cpp \
+					Contact.cpp
 SRCS			= $(addprefix $(SRC_PATH), $(SRC))
 
 # OBJECT FILES ----------------------------- #
@@ -42,8 +44,7 @@ OBJS			= $(addprefix $(OBJ_PATH), $(OBJ))
 
 # INCLUDES --------------------------------- #
 
-INC 			= -I ./inc/\
-				  -I/usr/include
+#INC 			= -I ./inc/\
 
 # RULES ------------------------------------ #
 

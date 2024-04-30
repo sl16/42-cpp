@@ -40,7 +40,7 @@ int main(void)
 		else if (cmd == "EXIT")
 			break;
 		else
-			std::cout << "Unknown command. ";
+			std::cout << std::endl << "Unknown command. ";
 	}
 		
 	return (0);

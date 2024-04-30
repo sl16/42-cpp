@@ -12,16 +12,32 @@
 
 #include "../inc/PhoneBook.hpp"
 
-std::string parseInput(void)
+PhoneBook::PhoneBook(void)
 {
-	std::string input;
+	return ;
+}
 
-	
+PhoneBook::~PhoneBook(void)
+{
+	return ;
+}
+
+int	PhoneBook::getContactsTotal(void) const
+{
+	return (this->_contactsTotal);
 }
 
 void PhoneBook::add(void)
 {
-	if (total == 8);
+	if (_contactsTotal == 8)
+	{
+		
+	}
 		// implement contact reassignment
-	this->_contacts[total].setFirstName(parseInput())
+	_contacts[_contactsTotal].setContact();
+}
+
+void PhoneBook::search(void)
+{
+	std::cout << "Totally displaying contacts:" << std::endl;
 }

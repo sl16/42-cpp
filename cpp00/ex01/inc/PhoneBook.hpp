@@ -22,12 +22,15 @@ class PhoneBook
 	public:
 		PhoneBook();
 		~PhoneBook();
-		static int total;
+
+		int	getContactsTotal(void) const;
+
 		void add(void);
 		void search(void);
 		
 	private:
 		Contact _contacts[8];
+		int		_contactsTotal;
 };
 
 #endif
