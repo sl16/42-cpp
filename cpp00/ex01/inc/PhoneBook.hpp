@@ -13,9 +13,18 @@
 #ifndef PHONEBOOK_HPP
 # define PHONEBOOK_HPP
 
+#define GREEN   "\033[32m"
+#define RESET   "\033[0m"
+
+#define NUM_OF_CONTACTS	2
+
 #include <iostream>
+#include <iomanip>
 #include <string>
+#include <cstdlib>
+
 #include "./Contact.hpp"
+#include "./utils.hpp"
 
 class PhoneBook
 {
@@ -29,7 +38,7 @@ class PhoneBook
 		void search(void);
 		
 	private:
-		Contact _contacts[8];
+		Contact _contacts[NUM_OF_CONTACTS];
 		int		_contactsTotal;
 };
 

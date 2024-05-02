@@ -6,7 +6,7 @@
 /*   By: vbartos <vbartos@student.42prague.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 14:47:39 by vbartos           #+#    #+#             */
-/*   Updated: 2024/04/25 15:53:57 by vbartos          ###   ########.fr       */
+/*   Updated: 2024/05/02 14:29:09 by vbartos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,9 @@ int main(void)
 	
 	while (true)
 	{
+		std::cout << std::endl;
 		std::cout << "Enter command:" << std::endl;
-		std::cin >> cmd;
+		std::getline(std::cin, cmd);
 		if (cmd == "ADD")
 			phonebook.add();
 		else if (cmd == "SEARCH")
@@ -42,6 +43,5 @@ int main(void)
 		else
 			std::cout << std::endl << "Unknown command. ";
 	}
-		
 	return (0);
 }

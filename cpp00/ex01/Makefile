@@ -31,7 +31,8 @@ RM				= rm -rf
 SRC_PATH		= src/
 SRC				= main.cpp \
 					PhoneBook.cpp \
-					Contact.cpp
+					Contact.cpp \
+					utils.cpp
 SRCS			= $(addprefix $(SRC_PATH), $(SRC))
 
 # OBJECT FILES ----------------------------- #
