@@ -1,0 +1,1 @@
+diff <(cut -d ' ' -f2- file1.txt) <(cut -d ' ' -f2- file2.txt)

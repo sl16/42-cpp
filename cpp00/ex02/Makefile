@@ -6,7 +6,7 @@
 #    By: vbartos <vbartos@student.42prague.com>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/19 23:00:29 by vbartos           #+#    #+#              #
-#    Updated: 2024/04/23 13:00:45 by vbartos          ###   ########.fr        #
+#    Updated: 2024/05/02 20:17:46 by vbartos          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ RESET			= \033[0m
 
 # PROJECT ---------------------------------- #
 
-NAME			= phonebook
+NAME			= account
 # FLAGS ------------------------------------ #
 
 CC				= c++
@@ -28,11 +28,9 @@ RM				= rm -rf
 
 # SOURCE FILES ----------------------------- #
 
-SRC_PATH		= src/
-SRC				= main.cpp \
-					PhoneBook.cpp \
-					Contact.cpp \
-					utils.cpp
+#SRC_PATH		= src/
+SRC				= tests.cpp \
+					Account.cpp
 SRCS			= $(addprefix $(SRC_PATH), $(SRC))
 
 # OBJECT FILES ----------------------------- #
