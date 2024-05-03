@@ -6,7 +6,7 @@
 /*   By: vbartos <vbartos@student.42prague.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 14:49:08 by vbartos           #+#    #+#             */
-/*   Updated: 2024/04/25 15:27:49 by vbartos          ###   ########.fr       */
+/*   Updated: 2024/05/03 13:10:06 by vbartos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 #include <iostream>
 #include <string>
+#include <cstdlib>
 
 #include "./utils.hpp"
 

@@ -6,7 +6,7 @@
 /*   By: vbartos <vbartos@student.42prague.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 14:48:47 by vbartos           #+#    #+#             */
-/*   Updated: 2024/05/02 14:29:21 by vbartos          ###   ########.fr       */
+/*   Updated: 2024/05/03 13:06:34 by vbartos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,6 +107,11 @@ void PhoneBook::search(void)
 	std::cout << "----------------" << std::endl;
 	std::cout << "For detailed contact display, enter the corresponding index: ";
 	std::getline(std::cin, indexStr);
+	if(!std::cin)
+	{
+		std::cout << std::endl << "Returning to main menu." << std::endl;
+		return ;
+	}
 	std::cout << std::endl;
 	if (!isAllNumeric(indexStr))
 	{

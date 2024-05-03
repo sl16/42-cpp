@@ -6,7 +6,7 @@
 /*   By: vbartos <vbartos@student.42prague.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 14:48:31 by vbartos           #+#    #+#             */
-/*   Updated: 2024/05/02 14:29:18 by vbartos          ###   ########.fr       */
+/*   Updated: 2024/05/03 13:09:23 by vbartos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,8 @@ std::string parseInput(std::string field)
 	{
 		std::cout << "Set contact's " << field << ": ";
 		std::getline(std::cin, input);
+		if(!std::cin)
+			std::exit(0);
 		if (input != "" && !isAllSpaces(input))
 		{
 			if (field == "phone number")
