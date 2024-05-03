@@ -6,7 +6,7 @@
 /*   By: vbartos <vbartos@student.42prague.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 12:38:33 by vbartos           #+#    #+#             */
-/*   Updated: 2024/04/25 15:58:35 by vbartos          ###   ########.fr       */
+/*   Updated: 2024/05/03 09:09:42 by vbartos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #define GREEN   "\033[32m"
 #define RESET   "\033[0m"
 
-#define NUM_OF_CONTACTS	2
+#define NUM_OF_CONTACTS	8
 
 #include <iostream>
 #include <iomanip>
