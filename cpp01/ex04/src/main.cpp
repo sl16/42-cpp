@@ -6,7 +6,7 @@
 /*   By: vbartos <vbartos@student.42prague.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 17:19:55 by vbartos           #+#    #+#             */
-/*   Updated: 2024/05/08 17:34:36 by vbartos          ###   ########.fr       */
+/*   Updated: 2024/05/08 21:08:58 by vbartos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,17 @@
 int	inputParser(int argc, char **argv)
 {
 	std::fstream tryFile;
+	std::string oldStr;
 	
 	if (argc != 4)
 	{
 		std::cout << "Correct usage: ./find_and_replace <filename> <string to replace> <replacement string>" << std::endl;
+		std::exit(1);
+	}
+	oldStr = argv[2];
+	if (oldStr == "")
+	{
+		std::cout << "Error: You must specify a string to be replaced." << std::endl;
 		std::exit(1);
 	}
 	tryFile.open(argv[1], std::ios::in);
