@@ -6,7 +6,7 @@
 /*   By: vbartos <vbartos@student.42prague.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 14:39:24 by vbartos           #+#    #+#             */
-/*   Updated: 2024/05/03 14:52:36 by vbartos          ###   ########.fr       */
+/*   Updated: 2024/05/10 11:47:14 by vbartos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,11 @@ class HumanB
 		~HumanB();
 		
 		void attack(void);
-		void setWeapon(Weapon newWeapon);
+		void setWeapon(Weapon &newWeapon);
 
 	private:
 		std::string _name;
-		Weapon		_weapon;
+		Weapon		*_weapon;
 };
 
 #endif

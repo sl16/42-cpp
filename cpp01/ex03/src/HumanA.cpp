@@ -6,16 +6,14 @@
 /*   By: vbartos <vbartos@student.42prague.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 14:18:17 by vbartos           #+#    #+#             */
-/*   Updated: 2024/05/03 15:09:27 by vbartos          ###   ########.fr       */
+/*   Updated: 2024/05/10 11:58:35 by vbartos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/HumanA.hpp"
 
-HumanA::HumanA(std::string name, Weapon weaponType)
+HumanA::HumanA(std::string name, Weapon &weaponType): _name(name), _weapon(weaponType)
 {
-	this->_name = name;
-	this->_weapon = weaponType;
 	return ;
 }
 

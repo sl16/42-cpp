@@ -6,7 +6,7 @@
 /*   By: vbartos <vbartos@student.42prague.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 14:18:27 by vbartos           #+#    #+#             */
-/*   Updated: 2024/05/03 15:04:18 by vbartos          ###   ########.fr       */
+/*   Updated: 2024/05/10 11:43:52 by vbartos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ class Weapon
 		Weapon(std::string initialType);
 		~Weapon();
 
-		std::string getType(void) const;
-		void		setType(std::string newType);
+		const std::string	&getType(void) const;
+		void				setType(std::string newType);
 	
 	private:
 		std::string	_type;
