@@ -6,11 +6,13 @@
 /*   By: vbartos <vbartos@student.42prague.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 07:18:54 by vbartos           #+#    #+#             */
-/*   Updated: 2024/05/13 11:13:19 by vbartos          ###   ########.fr       */
+/*   Updated: 2024/05/13 14:00:26 by vbartos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/Fixed.hpp"
+
+const int Fixed::_bits = 8;
 
 // CONSTRUCTORS
 
@@ -23,7 +25,7 @@ Fixed::Fixed()
 
 Fixed::Fixed(const int num)
 {
-	this->_fpVal = num;
+	this->_fpVal = num << _bits;
 	
 	std::cout << "Default constructor called" << std::endl;
 }
