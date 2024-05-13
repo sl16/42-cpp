@@ -6,7 +6,7 @@
 /*   By: vbartos <vbartos@student.42prague.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 07:17:52 by vbartos           #+#    #+#             */
-/*   Updated: 2024/05/13 08:50:56 by vbartos          ###   ########.fr       */
+/*   Updated: 2024/05/13 13:08:06 by vbartos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ class Fixed
 		
 	private:
 		int					_fpVal;
-		const static int	_bits = 8;
+		const static int	_bits;
 };
 
 #endif

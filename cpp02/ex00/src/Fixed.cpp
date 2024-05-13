@@ -6,11 +6,13 @@
 /*   By: vbartos <vbartos@student.42prague.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 07:18:54 by vbartos           #+#    #+#             */
-/*   Updated: 2024/05/13 10:47:23 by vbartos          ###   ########.fr       */
+/*   Updated: 2024/05/13 13:08:32 by vbartos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/Fixed.hpp"
+
+const int _bits = 8;
 
 Fixed::Fixed()
 {
