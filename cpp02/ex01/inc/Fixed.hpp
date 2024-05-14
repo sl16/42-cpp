@@ -6,7 +6,7 @@
 /*   By: vbartos <vbartos@student.42prague.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 07:17:52 by vbartos           #+#    #+#             */
-/*   Updated: 2024/05/13 13:08:53 by vbartos          ###   ########.fr       */
+/*   Updated: 2024/05/14 10:25:05 by vbartos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ class Fixed
 		Fixed(const float num);
 		~Fixed();
 		Fixed(const Fixed &other);
+		
 		Fixed& operator=(const Fixed &other);
 
 		int		getRawBits(void) const;
@@ -36,5 +37,7 @@ class Fixed
 		int					_fpVal;
 		const static int	_bits;
 };
+
+std::ostream& operator<<(std::ostream &out, const Fixed &fixed);
 
 #endif
