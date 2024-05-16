@@ -6,7 +6,7 @@
 /*   By: vbartos <vbartos@student.42prague.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 07:18:54 by vbartos           #+#    #+#             */
-/*   Updated: 2024/05/15 13:10:12 by vbartos          ###   ########.fr       */
+/*   Updated: 2024/05/16 13:54:05 by vbartos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void ClapTrap::attack(const std::string& target)
 
 void ClapTrap::takeDamage(unsigned int amount)
 {
-	if (_hp > 0)
+	if (_hp > 0 && _hp > static_cast<int>(amount))
 	{
 		_hp -= amount;
 		std::cout << "🤕 ClapTrap " << _name << " takes " << amount;
