@@ -6,7 +6,7 @@
 #    By: vbartos <vbartos@student.42prague.com>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/19 23:00:29 by vbartos           #+#    #+#              #
-#    Updated: 2024/05/15 12:19:39 by vbartos          ###   ########.fr        #
+#    Updated: 2024/05/16 13:24:24 by vbartos          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ RESET			= \033[0m
 
 # PROJECT ---------------------------------- #
 
-NAME			= claptrap
+NAME			= scavtrap
 
 # FLAGS ------------------------------------ #
 
@@ -31,7 +31,8 @@ RM				= rm -rf
 
 SRC_PATH		= src/
 SRC				= main.cpp \
-					ClapTrap.cpp
+					ClapTrap.cpp \
+					ScavTrap.cpp
 SRCS			= $(addprefix $(SRC_PATH), $(SRC))
 
 # OBJECT FILES ----------------------------- #
