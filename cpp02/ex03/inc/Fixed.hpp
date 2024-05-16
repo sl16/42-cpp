@@ -6,7 +6,7 @@
 /*   By: vbartos <vbartos@student.42prague.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 07:17:52 by vbartos           #+#    #+#             */
-/*   Updated: 2024/05/15 09:58:14 by vbartos          ###   ########.fr       */
+/*   Updated: 2024/05/16 08:56:18 by vbartos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,17 +28,17 @@ class Fixed
 		Fixed& operator=(const Fixed &other);
 
 		//OPERATOR OVERLOADS
-		Fixed operator+(const Fixed &other);
-		Fixed operator-(const Fixed &other);
-		Fixed operator*(const Fixed &other);
-		Fixed operator/(const Fixed &other);
+		Fixed operator+(const Fixed &other) const;
+		Fixed operator-(const Fixed &other) const;
+		Fixed operator*(const Fixed &other) const;
+		Fixed operator/(const Fixed &other) const;
 
-		bool operator>(const Fixed &other);
-		bool operator<(const Fixed &other);
-		bool operator<=(const Fixed &other);
-		bool operator>=(const Fixed &other);
-		bool operator==(const Fixed &other);
-		bool operator!=(const Fixed &other);
+		bool operator>(const Fixed &other) const;
+		bool operator<(const Fixed &other) const;
+		bool operator<=(const Fixed &other) const;
+		bool operator>=(const Fixed &other) const;
+		bool operator==(const Fixed &other) const;
+		bool operator!=(const Fixed &other) const;
 		
 		Fixed& operator++();
 		Fixed operator++(int);

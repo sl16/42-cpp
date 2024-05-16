@@ -6,7 +6,7 @@
 #    By: vbartos <vbartos@student.42prague.com>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/19 23:00:29 by vbartos           #+#    #+#              #
-#    Updated: 2024/05/15 09:26:00 by vbartos          ###   ########.fr        #
+#    Updated: 2024/05/16 08:27:42 by vbartos          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,8 @@ RM				= rm -rf
 SRC_PATH		= src/
 SRC				= main.cpp \
 					Fixed.cpp \
-					Point.cpp
+					Point.cpp \
+					bsp.cpp
 SRCS			= $(addprefix $(SRC_PATH), $(SRC))
 
 # OBJECT FILES ----------------------------- #

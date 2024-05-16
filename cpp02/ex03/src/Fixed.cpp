@@ -6,7 +6,7 @@
 /*   By: vbartos <vbartos@student.42prague.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 07:18:54 by vbartos           #+#    #+#             */
-/*   Updated: 2024/05/15 09:23:10 by vbartos          ###   ########.fr       */
+/*   Updated: 2024/05/16 09:35:03 by vbartos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ Fixed& Fixed::operator=(const Fixed &other)
 
 // OPERATOR OVERLOADS
 
-Fixed Fixed::operator+(const Fixed &other)
+Fixed Fixed::operator+(const Fixed &other) const
 {
 	Fixed res;
 	
@@ -104,7 +104,7 @@ Fixed Fixed::operator+(const Fixed &other)
 	return (res);
 }
 
-Fixed Fixed::operator-(const Fixed &other)
+Fixed Fixed::operator-(const Fixed &other) const
 {
 	Fixed res;
 	
@@ -112,7 +112,7 @@ Fixed Fixed::operator-(const Fixed &other)
 	return (res);
 }
 
-Fixed Fixed::operator*(const Fixed &other)
+Fixed Fixed::operator*(const Fixed &other) const
 {
 	Fixed res;
 	
@@ -120,7 +120,7 @@ Fixed Fixed::operator*(const Fixed &other)
 	return (res);
 }
 
-Fixed Fixed::operator/(const Fixed &other)
+Fixed Fixed::operator/(const Fixed &other) const
 {
 	Fixed res;
 	
@@ -128,7 +128,7 @@ Fixed Fixed::operator/(const Fixed &other)
 	return (res);
 }
 
-bool Fixed::operator>(const Fixed &other)
+bool Fixed::operator>(const Fixed &other) const
 {
 	if (this->toFloat() > other.toFloat())
 		return (true);
@@ -136,7 +136,7 @@ bool Fixed::operator>(const Fixed &other)
 		return (false);
 }
 
-bool Fixed::operator<(const Fixed &other)
+bool Fixed::operator<(const Fixed &other) const
 {
 	if (this->toFloat() > other.toFloat())
 		return (false);
@@ -144,7 +144,7 @@ bool Fixed::operator<(const Fixed &other)
 		return (true);
 }
 
-bool Fixed::operator>=(const Fixed &other)
+bool Fixed::operator>=(const Fixed &other) const
 {
 	if (this->toFloat() >= other.toFloat())
 		return (true);
@@ -152,7 +152,7 @@ bool Fixed::operator>=(const Fixed &other)
 		return (false);
 }
 
-bool Fixed::operator<=(const Fixed &other)
+bool Fixed::operator<=(const Fixed &other) const
 {
 	if (this->toFloat() <= other.toFloat())
 		return (true);
@@ -160,7 +160,7 @@ bool Fixed::operator<=(const Fixed &other)
 		return (false);
 }
 
-bool Fixed::operator==(const Fixed &other)
+bool Fixed::operator==(const Fixed &other) const
 {
 	if (this->toFloat() == other.toFloat())
 		return (true);
@@ -168,7 +168,7 @@ bool Fixed::operator==(const Fixed &other)
 		return (false);
 }
 
-bool Fixed::operator!=(const Fixed &other)
+bool Fixed::operator!=(const Fixed &other) const
 {
 	if (this->toFloat() == other.toFloat())
 		return (false);
