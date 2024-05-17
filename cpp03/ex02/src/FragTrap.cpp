@@ -6,13 +6,23 @@
 /*   By: vbartos <vbartos@student.42prague.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/16 14:25:34 by vbartos           #+#    #+#             */
-/*   Updated: 2024/05/16 14:29:45 by vbartos          ###   ########.fr       */
+/*   Updated: 2024/05/17 22:51:21 by vbartos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/FragTrap.hpp"
 
 // CONSTRUCTION & DESTRUCTION
+
+FragTrap::FragTrap(): ClapTrap()
+{
+	std::cout << "[FragTrap CONSTRUCTOR CALLED] " << this->_name << " constructed" << std::endl;
+
+	this->_name = "N/A";
+	this->_hp = 100;
+	this->_ep = 100;
+	this->_ad = 30;
+}
 
 FragTrap::FragTrap(std::string name): ClapTrap(name)
 {

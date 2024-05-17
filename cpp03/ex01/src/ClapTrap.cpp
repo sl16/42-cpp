@@ -6,13 +6,18 @@
 /*   By: vbartos <vbartos@student.42prague.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 07:18:54 by vbartos           #+#    #+#             */
-/*   Updated: 2024/05/16 14:11:30 by vbartos          ###   ########.fr       */
+/*   Updated: 2024/05/17 22:48:16 by vbartos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/ClapTrap.hpp"
 
 // CONSTRUCTION & DESTRUCTION
+
+ClapTrap::ClapTrap(): _name("N/A"), _hp(10), _ep(10), _ad(0)
+{
+	std::cout << "[CONSTRUCTOR CALLED] " <<_name << " constructed" << std::endl;
+}
 
 ClapTrap::ClapTrap(std::string name): _name(name), _hp(10), _ep(10), _ad(0)
 {

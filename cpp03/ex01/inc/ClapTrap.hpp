@@ -6,7 +6,7 @@
 /*   By: vbartos <vbartos@student.42prague.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 07:17:52 by vbartos           #+#    #+#             */
-/*   Updated: 2024/05/16 13:45:04 by vbartos          ###   ########.fr       */
+/*   Updated: 2024/05/17 22:48:25 by vbartos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 class ClapTrap
 {
 	public:
+		ClapTrap();
 		ClapTrap(std::string name);
 		~ClapTrap();
 		ClapTrap(const ClapTrap &other);

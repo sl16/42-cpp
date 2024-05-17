@@ -6,13 +6,23 @@
 /*   By: vbartos <vbartos@student.42prague.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/16 10:27:24 by vbartos           #+#    #+#             */
-/*   Updated: 2024/05/16 14:16:34 by vbartos          ###   ########.fr       */
+/*   Updated: 2024/05/17 22:49:55 by vbartos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/ScavTrap.hpp"
 
 // CONSTRUCTION & DESTRUCTION
+
+ScavTrap::ScavTrap(): ClapTrap()
+{
+	std::cout << "[ScavTrap CONSTRUCTOR CALLED] " << this->_name << " constructed" << std::endl;
+
+	this->_name = "N/A";
+	this->_hp = 100;
+	this->_ep = 50;
+	this->_ad = 20;
+}
 
 ScavTrap::ScavTrap(std::string name): ClapTrap(name)
 {
