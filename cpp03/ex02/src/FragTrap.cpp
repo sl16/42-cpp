@@ -6,7 +6,7 @@
 /*   By: vbartos <vbartos@student.42prague.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/16 14:25:34 by vbartos           #+#    #+#             */
-/*   Updated: 2024/05/17 22:51:21 by vbartos          ###   ########.fr       */
+/*   Updated: 2024/05/20 13:13:21 by vbartos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,26 +16,49 @@
 
 FragTrap::FragTrap(): ClapTrap()
 {
-	std::cout << "[FragTrap CONSTRUCTOR CALLED] " << this->_name << " constructed" << std::endl;
-
 	this->_name = "N/A";
 	this->_hp = 100;
 	this->_ep = 100;
 	this->_ad = 30;
+
+	std::cout << "[FragTrap CONSTRUCTOR CALLED] " << this->_name << " constructed" << std::endl;
 }
 
 FragTrap::FragTrap(std::string name): ClapTrap(name)
 {
-	std::cout << "[FragTrap CONSTRUCTOR CALLED] " << this->_name << " constructed" << std::endl;
-
 	this->_hp = 100;
 	this->_ep = 100;
 	this->_ad = 30;
+
+	std::cout << "[FragTrap CONSTRUCTOR CALLED] " << this->_name << " constructed" << std::endl;
 }
 
 FragTrap::~FragTrap()
 {
 	std::cout << "[FragTrap DESTRUCTOR CALLED] " << this->_name << " destroyed" << std::endl;
+}
+
+FragTrap::FragTrap(const FragTrap &other): ClapTrap(other)
+{
+	*this=other;
+	
+	std::cout << "[FragTrap CONSTRUCTOR CALLED] " << this->_name << " constructed from copy" << std::endl;
+
+}
+
+FragTrap& FragTrap::operator=(const FragTrap &other)
+{
+	if (this != &other)
+	{
+		this->_name = other._name;
+		this->_hp = other._hp;
+		this->_ep = other._ep;
+		this->_ad = other._ad;
+	}
+
+	std::cout << "[FragTrap ASSIGNMENT CALLED] " << this->_name << " assigned" << std::endl;
+
+	return (*this);
 }
 
 // MEMBER FUNCTIONS

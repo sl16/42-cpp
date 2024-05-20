@@ -6,7 +6,7 @@
 /*   By: vbartos <vbartos@student.42prague.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 07:16:38 by vbartos           #+#    #+#             */
-/*   Updated: 2024/05/16 14:35:44 by vbartos          ###   ########.fr       */
+/*   Updated: 2024/05/20 13:13:51 by vbartos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ int main( void )
 		std::cout << MAGENTA << "FRAGTRAP TESTS" << RESET << std::endl << std::endl;
 
 		FragTrap ft1("Fragster");
+		// FragTrap ft2(ft1);
 
 		ft1.attack("their nemesis");
 		ft1.takeDamage(69);

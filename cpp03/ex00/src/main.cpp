@@ -6,7 +6,7 @@
 /*   By: vbartos <vbartos@student.42prague.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 07:16:38 by vbartos           #+#    #+#             */
-/*   Updated: 2024/05/15 13:10:08 by vbartos          ###   ########.fr       */
+/*   Updated: 2024/05/20 13:01:15 by vbartos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 int main( void )
 {
 	ClapTrap ct1("CL4P-TP");
+	ClapTrap ct2(ct1);
+	ClapTrap ct3 = ct2;
 	
 	ct1.attack("big ass monster");
 	ct1.takeDamage(3);

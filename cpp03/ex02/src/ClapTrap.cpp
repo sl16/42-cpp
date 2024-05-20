@@ -6,7 +6,7 @@
 /*   By: vbartos <vbartos@student.42prague.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 07:18:54 by vbartos           #+#    #+#             */
-/*   Updated: 2024/05/17 22:51:20 by vbartos          ###   ########.fr       */
+/*   Updated: 2024/05/20 13:06:24 by vbartos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 
 ClapTrap::ClapTrap(): _name("N/A"), _hp(10), _ep(10), _ad(0)
 {
-	std::cout << "[CONSTRUCTOR CALLED] " <<_name << " constructed" << std::endl;
+	std::cout << "[ClapTrap CONSTRUCTOR CALLED] " <<_name << " constructed" << std::endl;
 }
 
 ClapTrap::ClapTrap(std::string name): _name(name), _hp(10), _ep(10), _ad(0)
@@ -31,17 +31,23 @@ ClapTrap::~ClapTrap()
 
 ClapTrap::ClapTrap(const ClapTrap &other)
 {
-	std::cout << "[ClapTrap CONSTRUCTOR CALLED] " << this->_name << " constructed from copy" << std::endl;
-	
 	*this = other;
+
+	std::cout << "[ClapTrap CONSTRUCTOR CALLED] " << _name << " constructed from copy" << std::endl;
 }
 
 ClapTrap& ClapTrap::operator=(const ClapTrap &other)
 {
+	if (this != &other)
+	{
+		this->_name = other._name;
+		this->_hp = other._hp;
+		this->_ep = other._ep;
+		this->_ad = other._ad;
+	}
+
 	std::cout << "[ClapTrap ASSIGNMENT CALLED] " << this->_name << " assigned" << std::endl;
 	
-	if (this != &other)
-		*this = other;
 	return (*this);
 }
 

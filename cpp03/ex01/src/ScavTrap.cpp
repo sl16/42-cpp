@@ -6,7 +6,7 @@
 /*   By: vbartos <vbartos@student.42prague.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/16 10:27:24 by vbartos           #+#    #+#             */
-/*   Updated: 2024/05/17 22:49:55 by vbartos          ###   ########.fr       */
+/*   Updated: 2024/05/20 13:11:30 by vbartos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,26 +16,47 @@
 
 ScavTrap::ScavTrap(): ClapTrap()
 {
-	std::cout << "[ScavTrap CONSTRUCTOR CALLED] " << this->_name << " constructed" << std::endl;
-
 	this->_name = "N/A";
 	this->_hp = 100;
 	this->_ep = 50;
 	this->_ad = 20;
+
+	std::cout << "[ScavTrap CONSTRUCTOR CALLED] " << this->_name << " constructed" << std::endl;
 }
 
 ScavTrap::ScavTrap(std::string name): ClapTrap(name)
 {
-	std::cout << "[ScavTrap CONSTRUCTOR CALLED] " << this->_name << " constructed" << std::endl;
-
 	this->_hp = 100;
 	this->_ep = 50;
 	this->_ad = 20;
+
+	std::cout << "[ScavTrap CONSTRUCTOR CALLED] " << this->_name << " constructed" << std::endl;
 }
 
 ScavTrap::~ScavTrap()
 {
 	std::cout << "[ScavTrap DESTRUCTOR CALLED] " << this->_name << " destroyed" << std::endl;
+}
+
+ScavTrap::ScavTrap(const ScavTrap &other): ClapTrap(other)
+{
+	*this = other;
+
+	std::cout << "[ScavTrap CONSTRUCTOR CALLED] " << this->_name << " constructed from copy" << std::endl;
+}
+
+ScavTrap& ScavTrap::operator=(const ScavTrap &other)
+{	
+	if (this != &other)
+	{
+		this->_name = other._name;
+		this->_hp = other._hp;
+		this->_ep = other._ep;
+		this->_ad = other._ad;
+	}
+	return (*this);
+
+	std::cout << "[ScavTrap ASSIGNMENT CALLED] " << this->_name << " assigned" << std::endl;
 }
 
 // MEMBER FUNCTIONS

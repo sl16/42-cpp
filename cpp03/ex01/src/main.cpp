@@ -6,7 +6,7 @@
 /*   By: vbartos <vbartos@student.42prague.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 07:16:38 by vbartos           #+#    #+#             */
-/*   Updated: 2024/05/16 14:22:47 by vbartos          ###   ########.fr       */
+/*   Updated: 2024/05/20 13:11:39 by vbartos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,9 @@ int main( void )
 		std::cout << MAGENTA << "SCAVTRAP TESTS" << RESET << std::endl << std::endl;
 
 		ScavTrap st1("Scavvie");
+		// ScavTrap st2;
+		// ScavTrap st3(st2);
+		// ScavTrap st4 = st3;
 
 		st1.attack("Handsome Jack");
 		st1.takeDamage(49);

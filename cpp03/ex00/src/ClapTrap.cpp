@@ -6,7 +6,7 @@
 /*   By: vbartos <vbartos@student.42prague.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 07:18:54 by vbartos           #+#    #+#             */
-/*   Updated: 2024/05/17 22:48:04 by vbartos          ###   ########.fr       */
+/*   Updated: 2024/05/20 13:02:01 by vbartos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,17 +31,23 @@ ClapTrap::~ClapTrap()
 
 ClapTrap::ClapTrap(const ClapTrap &other)
 {
-	std::cout << "[CONSTRUCTOR CALLED] " <<_name << " constructed from copy" << std::endl;
-	
 	*this = other;
+
+	std::cout << "[CONSTRUCTOR CALLED] " << _name << " constructed from copy" << std::endl;
 }
 
 ClapTrap& ClapTrap::operator=(const ClapTrap &other)
 {
-	std::cout << "[ASSIGNMENT CALLED] " <<_name << " assigned" << std::endl;
-	
 	if (this != &other)
-		*this = other;
+	{
+		this->_name = other._name;
+		this->_hp = other._hp;
+		this->_ep = other._ep;
+		this->_ad = other._ad;
+	}
+
+	std::cout << "[ASSIGNMENT CALLED] " << this->_name << " assigned" << std::endl;
+	
 	return (*this);
 }
 
