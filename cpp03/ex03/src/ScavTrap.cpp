@@ -6,7 +6,7 @@
 /*   By: vbartos <vbartos@student.42prague.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/16 10:27:24 by vbartos           #+#    #+#             */
-/*   Updated: 2024/05/20 17:50:44 by vbartos          ###   ########.fr       */
+/*   Updated: 2024/05/29 14:24:36 by vbartos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 
 ScavTrap::ScavTrap(): ClapTrap()
 {
-	this->_name = "N/A";
+	// this->_name = "N/A";
 	this->_hp = 100;
 	this->_ep = 50;
 	this->_ad = 20;

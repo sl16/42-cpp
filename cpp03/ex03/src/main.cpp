@@ -6,7 +6,7 @@
 /*   By: vbartos <vbartos@student.42prague.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 07:16:38 by vbartos           #+#    #+#             */
-/*   Updated: 2024/05/20 15:40:20 by vbartos          ###   ########.fr       */
+/*   Updated: 2024/05/29 14:30:52 by vbartos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,18 +70,19 @@ int main( void )
 		std::cout << MAGENTA << "DIAMONDTRAP TESTS" << RESET << std::endl << std::endl;
 
 		DiamondTrap ft1("Diamondeeznuts");
-		// FragTrap ft2(ft1);
-
+		// DiamondTrap ft2(ft1);
+		// DiamondTrap ft2;
 		ft1.whoAmI();
 		ft1.attack("their nemesis");
-		ft1.takeDamage(69);
+		// ft1.takeDamage(69);
 		ft1.highFivesGuys();
-		for (int i = 0; i < 2; i++)
-			ft1.beRepaired(10);
-		ft1.attack("their nemesis");
-		for (int i = 0; i < 5; i++)
-			ft1.takeDamage(23);
-		ft1.attack("their nemesis");
+		ft1.guardGate();
+		// for (int i = 0; i < 2; i++)
+		// 	ft1.beRepaired(10);
+		// ft1.attack("their nemesis");
+		// for (int i = 0; i < 5; i++)
+		// 	ft1.takeDamage(23);
+		// ft1.attack("their nemesis");
 	}
 	return (0);	
 }

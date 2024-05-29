@@ -6,7 +6,7 @@
 /*   By: vbartos <vbartos@student.42prague.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/16 14:25:34 by vbartos           #+#    #+#             */
-/*   Updated: 2024/05/20 17:50:33 by vbartos          ###   ########.fr       */
+/*   Updated: 2024/05/29 14:24:30 by vbartos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 
 FragTrap::FragTrap(): ClapTrap()
 {
-	this->_name = "N/A";
+	// this->_name = "N/A";
 	this->_hp = 100;
 	this->_ep = 100;
 	this->_ad = 30;
