@@ -6,7 +6,7 @@
 /*   By: vbartos <vbartos@student.42prague.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 18:12:41 by vbartos           #+#    #+#             */
-/*   Updated: 2024/05/30 13:35:24 by vbartos          ###   ########.fr       */
+/*   Updated: 2024/05/30 14:55:30 by vbartos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,20 @@
 
 int main()
 {
-	std::cout << MAGENTA << "CORRECT" << RESET << std::endl << std::endl;
+	{
+		std::cout << MAGENTA << "DEEP COPPY PROOF" << RESET << std::endl << std::endl;
+		
+		const Dog *lol1 = new Dog();
+		const Dog *lol2 = new Dog(*lol1);
+		Dog *lol3 = new Dog();
+		*lol3 = *lol1;
+
+		delete lol1;
+		delete lol2;
+		delete lol3;
+	}
+
+	std::cout << std::endl << MAGENTA << "CORRECT" << RESET << std::endl << std::endl;
 	
 	const Animal* meta = new Animal();
 	const Animal* j = new Dog();

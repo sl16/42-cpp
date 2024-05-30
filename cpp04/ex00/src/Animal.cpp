@@ -6,7 +6,7 @@
 /*   By: vbartos <vbartos@student.42prague.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 18:11:30 by vbartos           #+#    #+#             */
-/*   Updated: 2024/05/30 12:42:16 by vbartos          ###   ########.fr       */
+/*   Updated: 2024/05/30 14:39:41 by vbartos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ Animal::Animal(const Animal &other)
 Animal &Animal::operator=(const Animal &other)
 {
 	if (this != &other)
-		*this = other;
+		type = other.type;
 	std::cout << "[ANIMAL COPY ASSIGNMENT]" << std::endl;
 	return (*this);
 }

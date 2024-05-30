@@ -6,7 +6,7 @@
 /*   By: vbartos <vbartos@student.42prague.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 18:11:30 by vbartos           #+#    #+#             */
-/*   Updated: 2024/05/30 12:58:56 by vbartos          ###   ########.fr       */
+/*   Updated: 2024/05/30 14:47:07 by vbartos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,14 +27,14 @@ Dog::~Dog()
 
 Dog::Dog(const Dog &other): Animal(other)
 {
-	*this = other;
+	type = other.type;
 	std::cout << "[Dog COPY CONSTRUCTOR]" << std::endl;
 }
 
 Dog &Dog::operator=(const Dog &other)
 {
 	if (this != &other)
-		*this = other;
+		type = other.type;
 	std::cout << "[Dog COPY ASSIGNMENT]" << std::endl;
 	return (*this);
 }
