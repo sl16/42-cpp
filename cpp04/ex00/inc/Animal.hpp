@@ -6,7 +6,7 @@
 /*   By: vbartos <vbartos@student.42prague.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 18:10:47 by vbartos           #+#    #+#             */
-/*   Updated: 2024/05/30 12:58:10 by vbartos          ###   ########.fr       */
+/*   Updated: 2024/05/30 13:31:53 by vbartos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ class Animal
 {
 	public:
 		Animal();
-		~Animal();
+		virtual ~Animal();
 		Animal(const Animal &other);
 		Animal &operator=(const Animal &other);
 

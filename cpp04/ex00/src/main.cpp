@@ -6,7 +6,7 @@
 /*   By: vbartos <vbartos@student.42prague.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 18:12:41 by vbartos           #+#    #+#             */
-/*   Updated: 2024/05/30 13:17:04 by vbartos          ###   ########.fr       */
+/*   Updated: 2024/05/30 13:35:24 by vbartos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,15 @@ int main()
 
 	std::cout << l->getType() << " ";
 	l->makeSound();
+
+	std::cout << std::endl;
+	std::cout << MAGENTA << "DESTRUCTION" << RESET << std::endl << std::endl;
+
+	delete i;
+	delete j;
+	delete k;
+	delete l;
+	delete meta;
 
 	return (0);
 }
