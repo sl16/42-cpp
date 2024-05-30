@@ -1,51 +1,52 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.cpp                                         :+:      :+:    :+:   */
+/*   WrongCat.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vbartos <vbartos@student.42prague.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 18:11:30 by vbartos           #+#    #+#             */
-/*   Updated: 2024/05/30 12:42:16 by vbartos          ###   ########.fr       */
+/*   Updated: 2024/05/30 12:10:30 by vbartos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/Animal.hpp"
+#include "../inc/WrongCat.hpp"
 
 // CONSTRUCTION & DESTRUCTION
 
-Animal::Animal()
+WrongCat::WrongCat()
 {
-	this->type = "N/A";
-	std::cout << "[ANIMAL CONSTRUCTOR]" << std::endl;
+	this->type = "WrongCat";
+	std::cout << "[WrongCat CONSTRUCTOR]" << std::endl;
 }
 
-Animal::~Animal()
+WrongCat::~WrongCat()
 {
-	std::cout << "[ANIMAL DESTRUCTOR]" << std::endl;
+	std::cout << "[WrongCat DESTRUCTOR]" << std::endl;
 }
 
-Animal::Animal(const Animal &other)
+WrongCat::WrongCat(const WrongCat &other): WrongAnimal(other)
 {
 	*this = other;
-	std::cout << "[ANIMAL COPY CONSTRUCTOR]" << std::endl;
+	std::cout << "[WrongCat COPY CONSTRUCTOR]" << std::endl;
 }
 
-Animal &Animal::operator=(const Animal &other)
+WrongCat &WrongCat::operator=(const WrongCat &other)
 {
 	if (this != &other)
 		*this = other;
-	std::cout << "[ANIMAL COPY ASSIGNMENT]" << std::endl;
+	std::cout << "[WrongCat COPY ASSIGNMENT]" << std::endl;
 	return (*this);
 }
 
 // MEMBER FUNCTIONS
-void	Animal::makeSound() const
-{
-	std::cout << "👽 yo wazzup" << std::endl;
-}
 
-const std::string		&Animal::getType() const
+// void	WrongCat::makeSound() const
+// {
+// 	std::cout << "🐈 meow mňau" << std::endl;
+// }
+
+const std::string&	WrongCat::getType() const
 {
 	return (this->type);
 }

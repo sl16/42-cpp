@@ -1,51 +1,52 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.cpp                                         :+:      :+:    :+:   */
+/*   Dog.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vbartos <vbartos@student.42prague.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 18:11:30 by vbartos           #+#    #+#             */
-/*   Updated: 2024/05/30 12:42:16 by vbartos          ###   ########.fr       */
+/*   Updated: 2024/05/30 12:58:56 by vbartos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/Animal.hpp"
+#include "../inc/Dog.hpp"
 
 // CONSTRUCTION & DESTRUCTION
 
-Animal::Animal()
+Dog::Dog()
 {
-	this->type = "N/A";
-	std::cout << "[ANIMAL CONSTRUCTOR]" << std::endl;
+	this->type = "Dog";
+	std::cout << "[Dog CONSTRUCTOR]" << std::endl;
 }
 
-Animal::~Animal()
+Dog::~Dog()
 {
-	std::cout << "[ANIMAL DESTRUCTOR]" << std::endl;
+	std::cout << "[Dog DESTRUCTOR]" << std::endl;
 }
 
-Animal::Animal(const Animal &other)
+Dog::Dog(const Dog &other): Animal(other)
 {
 	*this = other;
-	std::cout << "[ANIMAL COPY CONSTRUCTOR]" << std::endl;
+	std::cout << "[Dog COPY CONSTRUCTOR]" << std::endl;
 }
 
-Animal &Animal::operator=(const Animal &other)
+Dog &Dog::operator=(const Dog &other)
 {
 	if (this != &other)
 		*this = other;
-	std::cout << "[ANIMAL COPY ASSIGNMENT]" << std::endl;
+	std::cout << "[Dog COPY ASSIGNMENT]" << std::endl;
 	return (*this);
 }
 
 // MEMBER FUNCTIONS
-void	Animal::makeSound() const
+
+void	Dog::makeSound() const
 {
-	std::cout << "👽 yo wazzup" << std::endl;
+	std::cout << "🐶 woofity woof" << std::endl;
 }
 
-const std::string		&Animal::getType() const
+const std::string&	Dog::getType() const
 {
 	return (this->type);
 }

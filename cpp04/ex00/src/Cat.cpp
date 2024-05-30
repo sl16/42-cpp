@@ -1,51 +1,52 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.cpp                                         :+:      :+:    :+:   */
+/*   Cat.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vbartos <vbartos@student.42prague.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 18:11:30 by vbartos           #+#    #+#             */
-/*   Updated: 2024/05/30 12:42:16 by vbartos          ###   ########.fr       */
+/*   Updated: 2024/05/30 12:10:30 by vbartos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/Animal.hpp"
+#include "../inc/Cat.hpp"
 
 // CONSTRUCTION & DESTRUCTION
 
-Animal::Animal()
+Cat::Cat()
 {
-	this->type = "N/A";
-	std::cout << "[ANIMAL CONSTRUCTOR]" << std::endl;
+	this->type = "Cat";
+	std::cout << "[Cat CONSTRUCTOR]" << std::endl;
 }
 
-Animal::~Animal()
+Cat::~Cat()
 {
-	std::cout << "[ANIMAL DESTRUCTOR]" << std::endl;
+	std::cout << "[Cat DESTRUCTOR]" << std::endl;
 }
 
-Animal::Animal(const Animal &other)
+Cat::Cat(const Cat &other): Animal(other)
 {
 	*this = other;
-	std::cout << "[ANIMAL COPY CONSTRUCTOR]" << std::endl;
+	std::cout << "[Cat COPY CONSTRUCTOR]" << std::endl;
 }
 
-Animal &Animal::operator=(const Animal &other)
+Cat &Cat::operator=(const Cat &other)
 {
 	if (this != &other)
 		*this = other;
-	std::cout << "[ANIMAL COPY ASSIGNMENT]" << std::endl;
+	std::cout << "[Cat COPY ASSIGNMENT]" << std::endl;
 	return (*this);
 }
 
 // MEMBER FUNCTIONS
-void	Animal::makeSound() const
+
+void	Cat::makeSound() const
 {
-	std::cout << "👽 yo wazzup" << std::endl;
+	std::cout << "🐈 meow mňau" << std::endl;
 }
 
-const std::string		&Animal::getType() const
+const std::string&	Cat::getType() const
 {
 	return (this->type);
 }

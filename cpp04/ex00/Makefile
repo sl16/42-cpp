@@ -6,7 +6,7 @@
 #    By: vbartos <vbartos@student.42prague.com>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/19 23:00:29 by vbartos           #+#    #+#              #
-#    Updated: 2024/05/29 18:13:33 by vbartos          ###   ########.fr        #
+#    Updated: 2024/05/30 13:09:59 by vbartos          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,11 @@ RM				= rm -rf
 
 SRC_PATH		= src/
 SRC				= main.cpp \
-					Animal.cpp
+					Animal.cpp \
+					Dog.cpp \
+					Cat.cpp \
+					WrongAnimal.cpp \
+					WrongCat.cpp
 SRCS			= $(addprefix $(SRC_PATH), $(SRC))
 
 # OBJECT FILES ----------------------------- #
