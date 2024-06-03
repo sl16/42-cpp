@@ -6,13 +6,18 @@
 /*   By: vbartos <vbartos@student.42prague.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/02 16:26:22 by vbartos           #+#    #+#             */
-/*   Updated: 2024/06/02 17:07:14 by vbartos          ###   ########.fr       */
+/*   Updated: 2024/06/03 12:35:02 by vbartos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/Cure.hpp"
 
-Cure::Cure(std::string const & type): type(type)
+Cure::Cure()
+{
+
+}
+
+Cure::Cure(std::string const & type): AMateria(type)
 {
 	
 }
@@ -34,12 +39,13 @@ Cure& Cure::operator=(const Cure &other)
 	return (*this);
 }
 
-std::string const & Cure::getType() const
+Cure* Cure::clone() const
 {
-	return (this->type);
+	Cure *cloned = new Cure(*this);
+	return (cloned);
 }
 
 void Cure::use(ICharacter& target)
 {
-	std::cout << "* Cure class cannot do anything *" << std::endl;
+	std::cout << "* heals " << target << "'s wounds *"<< std::endl;
 }

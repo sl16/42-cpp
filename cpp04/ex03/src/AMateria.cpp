@@ -6,11 +6,16 @@
 /*   By: vbartos <vbartos@student.42prague.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/02 16:26:12 by vbartos           #+#    #+#             */
-/*   Updated: 2024/06/02 16:58:42 by vbartos          ###   ########.fr       */
+/*   Updated: 2024/06/03 12:18:00 by vbartos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./AMateria.hpp"
+
+AMateria::AMateria()
+{
+
+}
 
 AMateria::AMateria(std::string const & type): type(type)
 {

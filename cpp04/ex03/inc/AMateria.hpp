@@ -6,7 +6,7 @@
 /*   By: vbartos <vbartos@student.42prague.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/02 16:19:56 by vbartos           #+#    #+#             */
-/*   Updated: 2024/06/02 17:02:48 by vbartos          ###   ########.fr       */
+/*   Updated: 2024/06/03 12:17:47 by vbartos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ class AMateria
 		const std::string type;
 		
 	public:
+		AMateria();
 		AMateria(std::string const & type);
 		~AMateria();
 		AMateria(const AMateria &other);
