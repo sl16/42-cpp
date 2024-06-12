@@ -6,9 +6,11 @@
 /*   By: vbartos <vbartos@student.42prague.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 19:05:53 by vbartos           #+#    #+#             */
-/*   Updated: 2024/06/12 11:17:34 by vbartos          ###   ########.fr       */
+/*   Updated: 2024/06/12 15:01:45 by vbartos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#pragma once
 
 #include "./AForm.hpp"
 
