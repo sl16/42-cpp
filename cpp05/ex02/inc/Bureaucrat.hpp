@@ -6,7 +6,7 @@
 /*   By: vbartos <vbartos@student.42prague.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 12:50:42 by vbartos           #+#    #+#             */
-/*   Updated: 2024/06/11 16:20:23 by vbartos          ###   ########.fr       */
+/*   Updated: 2024/06/12 10:22:41 by vbartos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include <iostream>
 #include <exception>
 
-class Form;
+class AForm;
 
 class Bureaucrat
 {
@@ -32,7 +32,8 @@ class Bureaucrat
 
 		void				raiseGrade();
 		void				lowerGrade();
-		void				signForm(Form &form);
+		void				signForm(AForm &form);
+		void				executeForm(const AForm &form);
 
 		class GradeTooLowException: public std::exception
 		{

@@ -6,16 +6,16 @@
 /*   By: vbartos <vbartos@student.42prague.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 12:56:19 by vbartos           #+#    #+#             */
-/*   Updated: 2024/06/11 16:20:34 by vbartos          ###   ########.fr       */
+/*   Updated: 2024/06/12 11:08:08 by vbartos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/Bureaucrat.hpp"
-#include "../inc/Form.hpp"
+#include "../inc/AForm.hpp"
 
 Bureaucrat::Bureaucrat(): _name("N/A")
 {
-	std::cout << "[brc CONSTRUCTOR - " << getName() << "]" << std::endl;
+	// std::cout << "[brc CONSTRUCTOR - " << getName() << "]" << std::endl;
 }
 
 Bureaucrat::Bureaucrat(std::string name, int grade): _name(name)
@@ -26,17 +26,17 @@ Bureaucrat::Bureaucrat(std::string name, int grade): _name(name)
 		throw (Bureaucrat::GradeTooLowException());
 	_grade = grade;
 	
-	std::cout << "[brc CONSTRUCTOR - " << getName() << "]" << std::endl;
+	// std::cout << "[brc CONSTRUCTOR - " << getName() << "]" << std::endl;
 }
 
 Bureaucrat::~Bureaucrat()
 {
-	std::cout << "[brc DESTRUCTOR - " << getName() << "]" << std::endl;
+	// std::cout << "[brc DESTRUCTOR - " << getName() << "]" << std::endl;
 }
 
 Bureaucrat::Bureaucrat(const Bureaucrat &other): _name(other._name), _grade(other._grade)
 {
-	std::cout << "[brc COPY CONSTRUCTOR]" << std::endl;
+	// std::cout << "[brc COPY CONSTRUCTOR]" << std::endl;
 }
 
 Bureaucrat& Bureaucrat::operator=(const Bureaucrat &other)
@@ -75,7 +75,7 @@ void Bureaucrat::lowerGrade()
 	this->_grade++;
 }
 
-void Bureaucrat::signForm(Form &form)
+void Bureaucrat::signForm(AForm &form)
 {
 	try
 	{
@@ -85,6 +85,19 @@ void Bureaucrat::signForm(Form &form)
 	catch(const std::exception& e)
 	{
 		std::cerr << getName() << " couldn't sign " << form.getName() << " because " << e.what() << std::endl;
+	}
+}
+
+void Bureaucrat::executeForm(const AForm &form)
+{
+	try
+	{
+		form.execute(*this);
+		std::cout << getName() << " executed " << form.getName() << std::endl;
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << getName() << " couldn't execute " << form.getName() << " because " << e.what() << std::endl;
 	}
 }
 

@@ -6,7 +6,7 @@
 /*   By: vbartos <vbartos@student.42prague.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 19:08:26 by vbartos           #+#    #+#             */
-/*   Updated: 2024/06/11 19:27:56 by vbartos          ###   ########.fr       */
+/*   Updated: 2024/06/12 09:59:23 by vbartos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include <string>
 #include <iostream>
 
-class Bureaucrat;
+#include "./Bureaucrat.hpp"
 
 class AForm
 {
@@ -30,7 +30,8 @@ class AForm
 		int					getGradeSign() const;
 		int					getGradeExec() const;
 		bool				isSigned() const;
-		virtual void		beSigned(Bureaucrat &brc) = 0;
+		void				beSigned(Bureaucrat &brc);
+		virtual void		execute(const Bureaucrat& executor) const = 0;
 
 		class GradeTooLowException: public std::exception
 		{
@@ -39,6 +40,18 @@ class AForm
 		};
 
 		class GradeTooHighException: public std::exception
+		{
+			public:
+				virtual const char* what() const throw();
+		};
+
+		class ExecutionNotSignedException: public std::exception
+		{
+			public:
+				virtual const char* what() const throw();
+		};
+
+		class ExecutionLowGradeException: public std::exception
 		{
 			public:
 				virtual const char* what() const throw();

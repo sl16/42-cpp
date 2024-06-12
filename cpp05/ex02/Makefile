@@ -6,7 +6,7 @@
 #    By: vbartos <vbartos@student.42prague.com>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/19 23:00:29 by vbartos           #+#    #+#              #
-#    Updated: 2024/06/11 16:06:05 by vbartos          ###   ########.fr        #
+#    Updated: 2024/06/12 11:22:18 by vbartos          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,10 @@ RM				= rm -rf
 
 SRC_PATH		= src/
 SRC				= Bureaucrat.cpp \
-					Form.cpp \
+					AForm.cpp \
+					ShrubberyCreationForm.cpp \
+					RobotomyRequestForm.cpp \
+					PresidentialPardonForm.cpp \
 					main.cpp
 SRCS			= $(addprefix $(SRC_PATH), $(SRC))
 

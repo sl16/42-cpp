@@ -1,27 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ShrubberyCreationForm.hpp                          :+:      :+:    :+:   */
+/*   RobotomyRequestForm.hpp                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vbartos <vbartos@student.42prague.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 19:05:53 by vbartos           #+#    #+#             */
-/*   Updated: 2024/06/12 10:56:12 by vbartos          ###   ########.fr       */
+/*   Updated: 2024/06/12 10:57:33 by vbartos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./AForm.hpp"
 
-#include <fstream>
+#include <cstdlib> // for rand() and srand()
+#include <ctime> // for time()
 
-class ShrubberyCreationForm: public AForm
+class RobotomyRequestForm: public AForm
 {
 	public:
-		ShrubberyCreationForm();
-		ShrubberyCreationForm(std::string target);
-		~ShrubberyCreationForm();
-		ShrubberyCreationForm(const ShrubberyCreationForm &other);
-		ShrubberyCreationForm& operator=(const ShrubberyCreationForm &other);
+		RobotomyRequestForm();
+		RobotomyRequestForm(std::string target);
+		~RobotomyRequestForm();
+		RobotomyRequestForm(const RobotomyRequestForm &other);
+		RobotomyRequestForm& operator=(const RobotomyRequestForm &other);
 
 		const std::string& getTarget() const;
 

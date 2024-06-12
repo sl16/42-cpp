@@ -6,7 +6,7 @@
 /*   By: vbartos <vbartos@student.42prague.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 15:22:40 by vbartos           #+#    #+#             */
-/*   Updated: 2024/06/11 19:22:15 by vbartos          ###   ########.fr       */
+/*   Updated: 2024/06/12 09:57:43 by vbartos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 
 AForm::AForm(): _name("Default"), _gradeExec(75), _gradeSign(75), _signed(false)
 {	
-	std::cout << "[AForm CONSTRUCTOR - " << getName() << "]" << std::endl;
+	// std::cout << "[AForm CONSTRUCTOR - " << getName() << "]" << std::endl;
 }
 
 AForm::AForm(std::string name, int gradeExec, int gradeSign): _name(name), _gradeExec(gradeExec), _gradeSign(gradeSign), _signed(false)
@@ -27,17 +27,17 @@ AForm::AForm(std::string name, int gradeExec, int gradeSign): _name(name), _grad
 	else if (gradeSign > 150 || gradeExec > 150)
 		throw (AForm::GradeTooLowException());
 	
-	std::cout << "[AForm CONSTRUCTOR - " << getName() << "]" << std::endl;
+	// std::cout << "[AForm CONSTRUCTOR - " << getName() << "]" << std::endl;
 }
 
 AForm::~AForm()
 {
-	std::cout << "[AForm DESTRUCTOR - " << getName() << "]" << std::endl;
+	// std::cout << "[AForm DESTRUCTOR - " << getName() << "]" << std::endl;
 }
 
 AForm::AForm(const AForm &other): _name(other._name), _gradeExec(other._gradeExec), _gradeSign(other._gradeSign), _signed(other._signed)
 {
-	std::cout << "[AForm COPY CONSTRUCTOR]" << std::endl;
+	// std::cout << "[AForm COPY CONSTRUCTOR]" << std::endl;
 }
 
 AForm& AForm::operator=(const AForm &other)
@@ -71,13 +71,13 @@ bool				AForm::isSigned() const
 
 // MEMEBER FUNCTIONS
 
-// void AForm::beSigned(Bureaucrat &brc)
-// {
-// 	if (brc.getGrade() <= getGradeSign())
-// 		_signed = true;
-// 	else
-// 		throw (GradeTooLowException());
-// }
+void AForm::beSigned(Bureaucrat &brc)
+{
+	if (brc.getGrade() <= getGradeSign())
+		_signed = true;
+	else
+		throw (GradeTooLowException());
+}
 
 // EXCEPTIONS
 
@@ -89,6 +89,16 @@ const char* AForm::GradeTooLowException::what() const throw()
 const char* AForm::GradeTooHighException::what() const throw()
 {
 	return ("The grade is too high.");
+}
+
+const char* AForm::ExecutionNotSignedException::what() const throw()
+{
+	return ("The form is not signed.");
+}
+
+const char* AForm::ExecutionLowGradeException::what() const throw()
+{
+	return ("The executor does not qualify.");
 }
 
 // STREAM OVERLOADS
