@@ -6,7 +6,7 @@
 /*   By: vbartos <vbartos@student.42prague.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 15:15:33 by vbartos           #+#    #+#             */
-/*   Updated: 2024/06/11 16:23:02 by vbartos          ###   ########.fr       */
+/*   Updated: 2024/06/13 06:50:42 by vbartos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@ class Form
 		Form(const Form &other);
 		Form& operator=(const Form &other);
 
-		const std::string	getName() const;
-		int					getGradeSign() const;
-		int					getGradeExec() const;
+		const std::string&	getName() const;
+		const int&			getGradeSign() const;
+		const int&			getGradeExec() const;
 		bool				isSigned() const;
 		void				beSigned(Bureaucrat &brc);
 
@@ -46,8 +46,8 @@ class Form
 	
 	private:
 		const std::string 	_name;
-		int					_gradeExec;
-		int					_gradeSign;
+		const int			_gradeExec;
+		const int			_gradeSign;
 		bool				_signed;
 };
 

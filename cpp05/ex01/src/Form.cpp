@@ -6,7 +6,7 @@
 /*   By: vbartos <vbartos@student.42prague.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 15:22:40 by vbartos           #+#    #+#             */
-/*   Updated: 2024/06/11 16:48:21 by vbartos          ###   ########.fr       */
+/*   Updated: 2024/06/13 06:47:24 by vbartos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,17 +49,17 @@ Form& Form::operator=(const Form &other)
 
 // GETTERS
 
-const std::string	Form::getName() const
+const std::string&	Form::getName() const
 {
 	return (_name);
 }
 
-int					Form::getGradeSign() const
+const int&			Form::getGradeSign() const
 {
 	return (_gradeSign);
 }
 
-int					Form::getGradeExec() const
+const int&			Form::getGradeExec() const
 {
 	return (_gradeExec);
 }

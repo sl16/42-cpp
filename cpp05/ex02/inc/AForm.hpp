@@ -6,7 +6,7 @@
 /*   By: vbartos <vbartos@student.42prague.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 19:08:26 by vbartos           #+#    #+#             */
-/*   Updated: 2024/06/12 09:59:23 by vbartos          ###   ########.fr       */
+/*   Updated: 2024/06/13 06:47:56 by vbartos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@ class AForm
 		AForm(const AForm &other);
 		AForm& operator=(const AForm &other);
 
-		const std::string	getName() const;
-		int					getGradeSign() const;
-		int					getGradeExec() const;
+		const std::string&	getName() const;
+		const int&			getGradeSign() const;
+		const int&			getGradeExec() const;
 		bool				isSigned() const;
 		void				beSigned(Bureaucrat &brc);
 		virtual void		execute(const Bureaucrat& executor) const = 0;
@@ -59,8 +59,8 @@ class AForm
 	
 	private:
 		const std::string 	_name;
-		int					_gradeExec;
-		int					_gradeSign;
+		const int			_gradeExec;
+		const int			_gradeSign;
 		bool				_signed;
 };
 
