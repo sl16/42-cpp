@@ -6,7 +6,7 @@
 /*   By: vbartos <vbartos@student.42prague.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 21:49:59 by vbartos           #+#    #+#             */
-/*   Updated: 2024/06/13 13:18:27 by vbartos          ###   ########.fr       */
+/*   Updated: 2024/06/15 15:57:15 by vbartos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,9 @@
 
 #include <string>
 #include <iostream>
+#include <iomanip>
 #include <cstdlib>
+#include <limits>
 
 #define SYMBOLS_INT	"-0123456789"
 #define SYMBOLS_FLT	"-0123456789f."
