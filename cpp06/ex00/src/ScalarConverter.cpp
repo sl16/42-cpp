@@ -6,7 +6,7 @@
 /*   By: vbartos <vbartos@student.42prague.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 21:49:51 by vbartos           #+#    #+#             */
-/*   Updated: 2024/06/17 16:22:21 by vbartos          ###   ########.fr       */
+/*   Updated: 2024/06/17 17:14:17 by vbartos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,8 @@ static bool isFloat(std::string value)
 {
 	if (value.find_first_not_of(SYMBOLS_FLT) == std::string::npos
 		&& value.find_first_of('.') == value.find_last_of('.')
-		&& value.find_first_of('f') == value.find_last_of('f'))
+		&& value.find_first_of('f') == value.find_last_of('f')
+		&& value[value.size() - 1] == 'f')
 		return (true);
 	else
 		return (false);
@@ -103,12 +104,30 @@ static char		stringToChar(std::string value)
 
 static long 	stringToInt(std::string value)
 {
-    return (atol(value.c_str()));
+	long	i;
+	char	*end;
+
+	i = std::strtol(value.c_str(), &end, 10);
+	if (i < std::numeric_limits<int>::min() || i > std::numeric_limits<int>::max())
+	{
+		std::cout << "Invalid type provided (int overflow/underflow)." << std::endl;
+		exit(1);
+	}
+	return (i);
 }
 
 static float	stringToFloat(std::string value)
 {
-	return (std::strtof(value.c_str(), NULL));
+	float	f;
+	char	*end;
+
+	f = std::strtof(value.c_str(), &end);
+	if (*end != 'f')
+	{
+		std::cout << "Invalid type provided (float overflow/underflow)." << std::endl;
+		exit(1);
+	}
+	return (f);
 }
 
 static double	stringToDouble(std::string value)
@@ -134,7 +153,7 @@ ValueType getType(std::string value)
 		return (IS_INF_POS);
 	else
 	{
-		std::cout << "I don't know how to convert that. Are you crazy?!" << std::endl;
+		std::cout << "Invalid type provided." << std::endl;
 		exit(1);
 	}
 }
@@ -189,7 +208,7 @@ void printFromFloat(float f)
 	if (f < std::numeric_limits<int>::min() || f > std::numeric_limits<int>::max())
 		std::cout << IMPOSSIBLE << std::endl;
 	else
-		std::cout << f << std::endl;
+		std::cout << static_cast<int>(f) << std::endl;
 
 	std::cout << "float: \t" << std::fixed << std::setprecision(1) << f << "f" << std::endl;
 	
@@ -208,7 +227,7 @@ void printFromDouble(double d)
 	if (d < std::numeric_limits<int>::min() || d > std::numeric_limits<int>::max())
 		std::cout << IMPOSSIBLE << std::endl;
 	else
-		std::cout << d << std::endl;
+		std::cout << static_cast<int>(d) << std::endl;
 
 	std::cout << "float: \t" << std::fixed << std::setprecision(1) << static_cast<float>(d) << "f" << std::endl;
 	
@@ -251,31 +270,32 @@ void ScalarConverter::convert(std::string str_value)
 	double			d;
 		
 	ValueType ogType = getType(str_value);
+	// std::cout << "ogType: " << ogType << std::endl;
 
 	switch(ogType)
 	{
-	    case IS_CHAR:
+		case IS_CHAR:
 			c = stringToChar(str_value);
 			printFromChar(c);
-	        break;
-	    case IS_INT:
-	        i = stringToInt(str_value);
+			break;
+		case IS_INT:
+			i = stringToInt(str_value);
 			printFromInt(i);
-	        break;
-	    case IS_FLOAT:
-	        f = stringToFloat(str_value);
+			break;
+		case IS_FLOAT:
+			f = stringToFloat(str_value);
 			printFromFloat(f);
-	        break;
-	    case IS_DOUBLE:
-	        d = stringToDouble(str_value);
+			break;
+		case IS_DOUBLE:
+			d = stringToDouble(str_value);
 			printFromDouble(d);
-	        break;
+			break;
 		case IS_NAN:
 		case IS_INF_NEG:
 		case IS_INF_POS:
 			printPseudo(ogType);
 			break;
-	    default:
+		default:
 			std::cout << "I don't know how to convert that. Are you crazy?!" << std::endl;
 	}
 }
