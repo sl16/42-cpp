@@ -6,7 +6,7 @@
 /*   By: vbartos <vbartos@student.42prague.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 21:49:51 by vbartos           #+#    #+#             */
-/*   Updated: 2024/06/17 14:27:24 by vbartos          ###   ########.fr       */
+/*   Updated: 2024/06/17 16:22:21 by vbartos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -164,11 +164,11 @@ void printFromInt(long i)
 	else
 		std::cout << static_cast<char>(i) << std::endl;
 
-	std::cout << "int: \t" << std::endl;
+	std::cout << "int: \t";
 	if (i < std::numeric_limits<int>::min() || i > std::numeric_limits<int>::max())
 		std::cout << IMPOSSIBLE << std::endl;
 	else
-		std::cout << i;
+		std::cout << i << std::endl;
 		
 	std::cout << "float: \t" << std::fixed << std::setprecision(1) << static_cast<float>(i) << "f" << std::endl;
 	
@@ -185,10 +185,11 @@ void printFromFloat(float f)
 	else
 		std::cout << static_cast<char>(f) << std::endl;
 	
+	std::cout << "int: \t";
 	if (f < std::numeric_limits<int>::min() || f > std::numeric_limits<int>::max())
 		std::cout << IMPOSSIBLE << std::endl;
 	else
-		std::cout << f;
+		std::cout << f << std::endl;
 
 	std::cout << "float: \t" << std::fixed << std::setprecision(1) << f << "f" << std::endl;
 	
@@ -203,17 +204,18 @@ void printFromDouble(double d)
 	else
 		std::cout << static_cast<char>(d) << std::endl;
 	
+	std::cout << "int: \t";
 	if (d < std::numeric_limits<int>::min() || d > std::numeric_limits<int>::max())
 		std::cout << IMPOSSIBLE << std::endl;
 	else
-		std::cout << d;
+		std::cout << d << std::endl;
 
 	std::cout << "float: \t" << std::fixed << std::setprecision(1) << static_cast<float>(d) << "f" << std::endl;
 	
 	std::cout << "double: " << std::fixed << std::setprecision(1) << d << std::endl;
 }
 
-void printPseudo(std::string str_value, ValueType ogType)
+void printPseudo(ValueType ogType)
 {
 	float			f;
 	double			d;
@@ -228,14 +230,14 @@ void printPseudo(std::string str_value, ValueType ogType)
 		f = static_cast<float>(std::numeric_limits<float>::infinity() * -1.f);
 		d = static_cast<double>(std::numeric_limits<double>::infinity() * -1.);
 	}
-	else if (ogType == IS_NAN)
+	else
 	{
 		f = static_cast<float>(std::numeric_limits<float>::quiet_NaN());
 		d = static_cast<double>(std::numeric_limits<double>::quiet_NaN());
 	}
 	std::cout << "char:\t" << IMPOSSIBLE << std::endl;
 	std::cout << "int:\t" << IMPOSSIBLE << std::endl;
-	std::cout << "float: " << f << "f" << std::endl;
+	std::cout << "float:\t" << f << "f" << std::endl;
 	std::cout << "double: " << d << std::endl;
 }
 
@@ -271,10 +273,9 @@ void ScalarConverter::convert(std::string str_value)
 		case IS_NAN:
 		case IS_INF_NEG:
 		case IS_INF_POS:
-			printPseudo(str_value, ogType);
+			printPseudo(ogType);
 			break;
 	    default:
 			std::cout << "I don't know how to convert that. Are you crazy?!" << std::endl;
 	}
-
 }
