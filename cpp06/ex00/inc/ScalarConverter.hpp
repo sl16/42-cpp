@@ -6,7 +6,7 @@
 /*   By: vbartos <vbartos@student.42prague.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 21:49:59 by vbartos           #+#    #+#             */
-/*   Updated: 2024/06/17 10:14:56 by vbartos          ###   ########.fr       */
+/*   Updated: 2024/06/17 12:00:53 by vbartos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,17 +48,21 @@ enum ValueType
     IS_DOUBLE
 };
 
-union ValueUnion
-{
-    char c;
-    int i;
-    float f;
-    double d;
-};
+// union ValueUnion
+// {
+//     char c;
+//     int i;
+//     float f;
+//     double d;
+// };
 
 struct ScalarValue
 {
-    ValueType 	type;
-    ValueUnion 	value;
+    ValueType 		type;
+    unsigned char	c;
+	int				i;
+	float			f;
+	double			d;
 	bool		valid = true;
+	bool		displayable = true;
 };

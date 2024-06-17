@@ -6,7 +6,7 @@
 /*   By: vbartos <vbartos@student.42prague.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 21:49:51 by vbartos           #+#    #+#             */
-/*   Updated: 2024/06/17 10:23:57 by vbartos          ###   ########.fr       */
+/*   Updated: 2024/06/17 12:57:46 by vbartos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,32 +72,27 @@ static bool isDouble(std::string value)
 		return (false);
 }
 
-static char		toChar(std::string value)
+static char		stringToChar(std::string value)
 {
 	return (static_cast<char>(value[0]));
 }
 
-// static int		toInt(std::string value)
-// {
-// 	return (atoi(value.c_str()));
-// }
-
-static int toInt(std::string value, ScalarValue data)
+static int 		stringToInt(std::string value, ScalarValue data)
 {
     std::istringstream iss(value);
     long long intVal;
 
     if (!(iss >> intVal) || intVal < std::numeric_limits<int>::min() || intVal > std::numeric_limits<int>::max())
 		data.valid = false;
-    return static_cast<int>(intVal);
+    return (atoi(value.c_str()));
 }
 
-static float	toFloat(std::string value)
+static float	stringToFloat(std::string value)
 {
 	return (atof(value.c_str()));
 }
 
-static double	toDouble(std::string value)
+static double	stringToDouble(std::string value)
 {
 	return (atof(value.c_str()));
 }
@@ -109,25 +104,25 @@ static ScalarValue convertToOriginal(std::string value)
 	if (isChar(value))
 	{
 		res.type = IS_CHAR;
-		res.value.c = toChar(value);
+		res.c = stringToChar(value);
 		std::cout << "ogType: char" << std::endl << std::endl;
 	}
 	else if (isInt(value))
 	{
 		res.type = IS_INT;
-		res.value.i = toInt(value, res);
+		res.i = stringToInt(value, res);
 		std::cout << "ogType: int" << std::endl << std::endl;
 	}
 	else if (isFloat(value))
 	{
 		res.type = IS_FLOAT;
-		res.value.f = toFloat(value);
+		res.f = stringToFloat(value);
 		std::cout << "ogType: float" << std::endl << std::endl;
 	}
 	else if (isDouble(value))
 	{
 		res.type = IS_DOUBLE;
-		res.value.d = toDouble(value);
+		res.d = stringToDouble(value);
 		std::cout << "ogType: double" << std::endl << std::endl;
 	}
 	else
@@ -138,120 +133,98 @@ static ScalarValue convertToOriginal(std::string value)
 	return (res);
 }
 
-static void printChar(ScalarValue valueOg)
+static void	typeToChar(ScalarValue ogValue, ScalarValue &res)
 {
-	std::cout << "char: \t";
-	if (valueOg.value.c < std::numeric_limits<char>::min() || valueOg.value.c > std::numeric_limits<char>::max())
-		std::cout << "impossible" << std::endl;
-	else if (valueOg.value.c < 32 || valueOg.value.c > 126)
-		std::cout << "non displayable" << std::endl;
-	else
-		std::cout << valueOg.value.c << std::endl;
+	if (ogValue.type == IS_CHAR)
+	{
+		res.c = ogValue.c;
+		return ;
+	}
+	
 
-	std::cout << "int: \t";
-	if (valueOg.value.c < std::numeric_limits<int>::min() || valueOg.value.c > std::numeric_limits<int>::max())
-		std::cout << "impossible" << std::endl;
-	else
-		std::cout << static_cast<int>(valueOg.value.c) << std::endl;
-
-	std::cout << "float: \t";
-	if (valueOg.value.c < std::numeric_limits<float>::min() || valueOg.value.c > std::numeric_limits<float>::max())
-		std::cout << "impossible" << std::endl;
-	else
-		std::cout << std::fixed << std::setprecision(1) << static_cast<float>(valueOg.value.c) << "f" << std::endl;
-
-	std::cout << "double: ";
-	if (valueOg.value.c < std::numeric_limits<double>::min() || valueOg.value.c > std::numeric_limits<double>::max())
-		std::cout << "impossible" << std::endl;
-	else
-		std::cout << std::fixed << std::setprecision(1) << static_cast<double>(valueOg.value.c) << std::endl;
 }
 
-static void printInt(ScalarValue valueOg)
+static void	typeToInt(ScalarValue ogValue, ScalarValue &res)
 {
-	std::cout << "char: \t";
-	if (valueOg.value.i < std::numeric_limits<char>::min() || valueOg.value.i > std::numeric_limits<char>::max())
-		std::cout << "impossible" << std::endl;
-	else if (valueOg.value.i < 32 || valueOg.value.i > 126)
-		std::cout << "non displayable" << std::endl;
-	else
-		std::cout << static_cast<char>(valueOg.value.i) << std::endl;
-
-	std::cout << "int: \t";
-	if (valueOg.value.i < std::numeric_limits<int>::min() || valueOg.value.i > std::numeric_limits<int>::max())
-		std::cout << "impossible" << std::endl;
-	else
-		std::cout << valueOg.value.i << std::endl;
-
-	std::cout << "float: \t";
-	if (valueOg.value.i < std::numeric_limits<float>::min() || valueOg.value.i > std::numeric_limits<float>::max())
-		std::cout << "impossible" << std::endl;
-	else
-		std::cout << std::fixed << std::setprecision(1) << static_cast<float>(valueOg.value.i) << "f" << std::endl;
-
-	std::cout << "double: ";
-	if (valueOg.value.i < std::numeric_limits<double>::min() || valueOg.value.i > std::numeric_limits<double>::max())
-		std::cout << "impossible" << std::endl;
-	else
-		std::cout << std::fixed << std::setprecision(1) << static_cast<double>(valueOg.value.i) << std::endl;
+	if (ogValue.type == IS_INT)
+	{
+		res.i = ogValue.i;
+		return ;
+	}
 }
 
-static void printFloat(ScalarValue valueOg)
+static void	typeToFloat(ScalarValue ogValue, ScalarValue &res)
 {
-	std::cout << "char: \t";
-	if (valueOg.value.f < std::numeric_limits<char>::min() || valueOg.value.f > std::numeric_limits<char>::max())
-		std::cout << "impossible" << std::endl;
-	else if (valueOg.value.f < 32 || valueOg.value.f > 126)
-		std::cout << "non displayable" << std::endl;
-	else
-		std::cout << static_cast<int>(valueOg.value.f) << std::endl;
-
-	std::cout << "int: \t";
-	if (valueOg.value.f < std::numeric_limits<int>::min() || valueOg.value.f > std::numeric_limits<int>::max())
-		std::cout << "impossible" << std::endl;
-	else
-		std::cout << static_cast<int>(valueOg.value.f) << std::endl;
-
-	std::cout << "float: \t";
-	if (valueOg.value.f < std::numeric_limits<float>::min() || valueOg.value.f > std::numeric_limits<float>::max())
-		std::cout << "impossible" << std::endl;
-	else
-		std::cout << std::fixed << std::setprecision(1) << valueOg.value.f << "f" << std::endl;
-
-	std::cout << "double: ";
-	if (valueOg.value.f < std::numeric_limits<double>::min() || valueOg.value.f > std::numeric_limits<double>::max())
-		std::cout << "impossible" << std::endl;
-	else
-		std::cout << std::fixed << std::setprecision(1) << static_cast<double>(valueOg.value.f) << std::endl;
+	if (ogValue.type == IS_FLOAT)
+	{
+		res.f = ogValue.f;
+		return ;
+	}
 }
 
-static void printDouble(ScalarValue valueOg)
+static void	typeToDouble(ScalarValue ogValue, ScalarValue &res)
+{
+	if (ogValue.type == IS_DOUBLE)
+	{
+		res.d = ogValue.d;
+		return ;
+	}
+}
+
+static ScalarValue convertFromOriginal(ScalarValue &ogValue, ValueType convertToType)
+{
+	ScalarValue res;
+	
+	if (convertToType == IS_CHAR)
+	{
+		res.type = IS_CHAR;
+		typeToChar(ogValue, res);
+	}
+	else if (convertToType == IS_INT)
+	{
+		res.type = IS_INT;
+		typeToInt(ogValue, res);
+	}
+	else if (convertToType == IS_FLOAT)
+	{
+		res.type = IS_FLOAT;
+		typeToFloat(ogValue, res);
+	}
+	else if (convertToType == IS_DOUBLE)
+	{
+		res.type = IS_DOUBLE;
+		typeToDouble(ogValue, res);
+	}
+	return (res);
+}
+
+static void printValues(ScalarValue valueC, ScalarValue valueI, ScalarValue valueF, ScalarValue valueD)
 {
 	std::cout << "char: \t";
-	if (valueOg.value.d < std::numeric_limits<char>::min() || valueOg.value.d > std::numeric_limits<char>::max())
+	if (valueC.valid == false)
 		std::cout << "impossible" << std::endl;
-	else if (valueOg.value.d < 32 || valueOg.value.d > 126)
+	else if (valueC.displayable == false)
 		std::cout << "non displayable" << std::endl;
 	else
-		std::cout << static_cast<int>(valueOg.value.d) << std::endl;
+		std::cout << valueC.c << std::endl;
 
 	std::cout << "int: \t";
-	if (valueOg.value.d < std::numeric_limits<int>::min() || valueOg.value.d > std::numeric_limits<int>::max())
+	if (valueI.valid == false)
 		std::cout << "impossible" << std::endl;
 	else
-		std::cout << static_cast<int>(valueOg.value.d) << std::endl;
+		std::cout << valueI.i << std::endl;
 
 	std::cout << "float: \t";
-	if (valueOg.value.d < std::numeric_limits<float>::min() || valueOg.value.d > std::numeric_limits<float>::max())
+	if (valueF.valid == false)
 		std::cout << "impossible" << std::endl;
 	else
-		std::cout << std::fixed << std::setprecision(1) << static_cast<float>(valueOg.value.d) << "f" << std::endl;
+		std::cout << valueF.f << std::endl;
 
-	std::cout << "double: ";
-	if (valueOg.value.d < std::numeric_limits<double>::min() || valueOg.value.d > std::numeric_limits<double>::max())
+	std::cout << "double: \t";
+	if (valueD.valid == false)
 		std::cout << "impossible" << std::endl;
 	else
-		std::cout << std::fixed << std::setprecision(1) << valueOg.value.d << std::endl;
+		std::cout << valueD.d << std::endl;
 }
 
 // MEMBER FUNCTIONS
@@ -259,23 +232,34 @@ static void printDouble(ScalarValue valueOg)
 void ScalarConverter::convert(std::string value)
 {
 	ScalarValue valueOg;
+	ScalarValue valueC;
+	ScalarValue valueI;
+	ScalarValue valueF;
+	ScalarValue valueD;
 	
 	valueOg = convertToOriginal(value);
+	valueC = convertFromOriginal(valueOg, IS_CHAR);
+	valueI = convertFromOriginal(valueOg, IS_INT);
+	valueF = convertFromOriginal(valueOg, IS_FLOAT);
+	valueD = convertFromOriginal(valueOg, IS_DOUBLE);
 
-	switch (valueOg.type)
-	{
-		case IS_CHAR:
-			printChar(valueOg);
-			break;
-		case IS_INT:
-			printInt(valueOg);
-			break;
-		case IS_FLOAT:
-			printFloat(valueOg);
-			break;
-		case IS_DOUBLE:
-			printDouble(valueOg);
-			break;
-	}
+	printValues(valueC, valueI, valueF, valueD);
+	
+
+	// switch (valueOg.type)
+	// {
+	// 	case IS_CHAR:
+	// 		printChar(valueOg);
+	// 		break;
+	// 	case IS_INT:
+	// 		printInt(valueOg);
+	// 		break;
+	// 	case IS_FLOAT:
+	// 		printFloat(valueOg);
+	// 		break;
+	// 	case IS_DOUBLE:
+	// 		printDouble(valueOg);
+	// 		break;
+	// }
 
 }
