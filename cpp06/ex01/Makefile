@@ -6,7 +6,7 @@
 #    By: vbartos <vbartos@student.42prague.com>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/19 23:00:29 by vbartos           #+#    #+#              #
-#    Updated: 2024/06/12 22:06:00 by vbartos          ###   ########.fr        #
+#    Updated: 2024/06/21 10:56:10 by vbartos          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ RESET			= \033[0m
 
 # PROJECT ---------------------------------- #
 
-NAME			= convert
+NAME			= serialize
 
 # FLAGS ------------------------------------ #
 
@@ -30,7 +30,7 @@ RM				= rm -rf
 # SOURCE FILES ----------------------------- #
 
 SRC_PATH		= src/
-SRC				= ScalarConverter.cpp \
+SRC				= Serializer.cpp \
 					main.cpp
 SRCS			= $(addprefix $(SRC_PATH), $(SRC))
 

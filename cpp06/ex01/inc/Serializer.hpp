@@ -6,14 +6,22 @@
 /*   By: vbartos <vbartos@student.42prague.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 21:49:59 by vbartos           #+#    #+#             */
-/*   Updated: 2024/06/17 18:56:12 by vbartos          ###   ########.fr       */
+/*   Updated: 2024/06/21 10:55:43 by vbartos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
-#include <cstdint>
+#include <stdint.h>
 #include <string>
+#include <iostream>
+
+struct Data
+{
+	int		a;
+	float	b;
+	double	c;
+};
 
 class Serializer
 {
@@ -28,9 +36,3 @@ class Serializer
 		static Data* 		deserialize(uintptr_t raw);
 };
 
-struct Data
-{
-	int		a;
-	float	b;
-	double	c;
-};
