@@ -6,7 +6,7 @@
 /*   By: vbartos <vbartos@student.42prague.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/21 12:37:04 by vbartos           #+#    #+#             */
-/*   Updated: 2024/06/21 13:20:40 by vbartos          ###   ########.fr       */
+/*   Updated: 2024/06/24 06:36:58 by vbartos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,21 +43,21 @@ void	identify(Base& p)
 {
 	try
 	{
-		dynamic_cast<A&>(p);
+		(void)dynamic_cast<A&>(p);
 		std::cout << "A" << std::endl;
 	}
 	catch (std::exception&)
 	{
 		try
 		{
-			dynamic_cast<B&>(p);
+			(void)dynamic_cast<B&>(p);
 			std::cout << "B" << std::endl;
 		}
 		catch (std::exception&)
 		{
 			try
 			{
-				dynamic_cast<C&>(p);
+				(void)dynamic_cast<C&>(p);
 				std::cout << "C" << std::endl;
 			}
 			catch (std::exception&)
