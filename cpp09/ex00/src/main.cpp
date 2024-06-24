@@ -6,7 +6,7 @@
 /*   By: vbartos <vbartos@student.42prague.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 14:12:19 by vbartos           #+#    #+#             */
-/*   Updated: 2024/06/23 15:30:44 by vbartos          ###   ########.fr       */
+/*   Updated: 2024/06/24 08:21:56 by vbartos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,18 @@ int main(int argc, char **argv)
 	{
 		std::cerr << "Error: Could not open file " << argv[1] << std::endl;
 		exit(1);
-	}	
+	}
+	std::ifstream database("data.csv");
+	if (database.fail())
+	{
+		std::cerr << "Error: Could not open file data.csv" << std::endl;
+		exit(1);
+	}
 	
 	BitcoinExchange exchange;
-	std::ifstream database("./data.csv");
 	exchange.parseDatabase(database, ',');
 	exchange.parseDatabase(input, '|');
+	exchange.lookUp();
 
-	
-	
 	return (0);
 }
