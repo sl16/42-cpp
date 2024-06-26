@@ -6,7 +6,7 @@
 /*   By: vbartos <vbartos@student.42prague.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 21:50:32 by vbartos           #+#    #+#             */
-/*   Updated: 2024/06/26 10:16:53 by vbartos          ###   ########.fr       */
+/*   Updated: 2024/06/26 12:46:46 by vbartos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ static bool formatIsValid(std::string& line)
 	size_t posLast = line.find_last_of('|');
 	if (posFirst != posLast || posFirst == std::string::npos)
 	{
-		std::cerr << "Error: wrong line format" << std::endl;
+		std::cerr << "Error: wrong line format -> " << line << std::endl;
 		return (false);
 	}
 
@@ -91,7 +91,7 @@ static bool isLeapYear(int year)
 }
 
 static bool dateIsValid(std::string& line, std::string& date)
-{
+{	
 	// Extract date from line
 	date = line.substr(0, line.find_first_of('|'));
 	date = trimSpaces(date);
@@ -125,11 +125,13 @@ static bool dateIsValid(std::string& line, std::string& date)
 		return (false);
 	}
 
+	// std::cout << "DATE VALIDATOR" << std::endl << std::endl;
+
 	return (true);
 }
 
 static bool valueIsValid(std::string line, double& value)
-{
+{	
 	// Extract value from line
 	std::string valueStr = line.substr(line.find_first_of('|') + 2);
 	
@@ -149,6 +151,8 @@ static bool valueIsValid(std::string line, double& value)
 		return (false);
 	}
 
+	// std::cout << "VALUE VALIDATOR" << std::endl << std::endl;
+	
 	return (true);
 }
 
@@ -157,7 +161,6 @@ static bool valueIsValid(std::string line, double& value)
 int BitcoinExchange::parseDatabase(std::ifstream& file)
 {
 	std::string			line;
-	std::stringstream	ss(line);
 	std::string			date;
 	std::string 		valueStr;
 	double 				value;
@@ -165,6 +168,8 @@ int BitcoinExchange::parseDatabase(std::ifstream& file)
 	skipHeader(file, line);	
 	while (std::getline(file, line))
 	{
+		std::stringstream	ss(line);
+		
 		std::getline(ss, date, ',');
 		std::getline(ss, valueStr);
 		value = std::strtod(valueStr.c_str(), NULL);
@@ -174,24 +179,36 @@ int BitcoinExchange::parseDatabase(std::ifstream& file)
 	return (0);
 }
 
-void BitcoinExchange::lookUp(std::ifstream& file)
+int BitcoinExchange::matchDate(std::string& date, double& value)
 {
-	
+	std::map<std::string, double>::iterator it = _database.find(date);
+
+	if (it != _database.end())
+    	std::cout << date << " => " << value << " = " << value * it->second << std::endl;
+	else 
+		std::cerr << "Error: exact date not found - searched date: " << date << std::endl;
+	return (0);
+}
+
+void BitcoinExchange::lookUp(std::ifstream& file)
+{	
 	std::string line;
 
 	skipHeader(file, line);
 	while (std::getline(file, line))
 	{
+		// std::cout << "INPUT: " << line << std::endl;
+		
 		if (!formatIsValid(line))
 			continue;
 
 		std::string date;
 		double		value;
 		
-		if (!dateIsValid(line, date) || valueIsValid(line, value))
+		if (!dateIsValid(line, date) || !valueIsValid(line, value))
 			continue;
 
-		// matchDate
+		matchDate(date, value);
 	}
 	
 	// for (std::map<std::string, double>::const_iterator it = _input.begin(); it != _input.end(); ++it)
