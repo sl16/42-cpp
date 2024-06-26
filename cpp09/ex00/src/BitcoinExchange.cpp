@@ -6,7 +6,7 @@
 /*   By: vbartos <vbartos@student.42prague.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 21:50:32 by vbartos           #+#    #+#             */
-/*   Updated: 2024/06/26 14:12:48 by vbartos          ###   ########.fr       */
+/*   Updated: 2024/06/26 15:18:39 by vbartos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,7 +136,14 @@ static bool dateIsValid(std::string& line, std::string& date)
 static bool valueIsValid(std::string line, double& value)
 {	
 	// Extract value from line
-	std::string valueStr = line.substr(line.find_first_of('|') + 2);
+	std::string valueStr = line.substr(line.find_first_of('|') + 1);
+
+	// Check if value is empty
+	if (valueStr.empty())
+	{
+		std::cerr << "Error: value is empty" << std::endl;
+		return (false);
+	}
 	
 	// Check if value is a number
 	char* end;

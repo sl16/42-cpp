@@ -6,7 +6,7 @@
 /*   By: vbartos <vbartos@student.42prague.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 21:49:59 by vbartos           #+#    #+#             */
-/*   Updated: 2024/06/26 14:11:08 by vbartos          ###   ########.fr       */
+/*   Updated: 2024/06/26 15:18:17 by vbartos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 #include <map>
 #include <cstdlib>
 #include <iomanip>
+#include <cmath>
 
 #define PRECISION 2
 
