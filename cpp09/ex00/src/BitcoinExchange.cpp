@@ -6,7 +6,7 @@
 /*   By: vbartos <vbartos@student.42prague.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 21:50:32 by vbartos           #+#    #+#             */
-/*   Updated: 2024/06/26 12:46:46 by vbartos          ###   ########.fr       */
+/*   Updated: 2024/06/26 14:12:48 by vbartos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,11 @@ BitcoinExchange& BitcoinExchange::operator=(const BitcoinExchange& other)
 static void skipHeader(std::ifstream& file, std::string& line)
 {
 	std::getline(file, line);
-	if (line == "date,exchange_rate" || line == "date | value")
-		std::getline(file, line);
+	if (line != "date,exchange_rate" && line != "date | value")
+	{
+		file.clear();
+		file.seekg(0, std::ios::beg);
+	}
 }
 
 static std::string trimSpaces(const std::string& str)
@@ -184,9 +187,22 @@ int BitcoinExchange::matchDate(std::string& date, double& value)
 	std::map<std::string, double>::iterator it = _database.find(date);
 
 	if (it != _database.end())
-    	std::cout << date << " => " << value << " = " << value * it->second << std::endl;
+	{
+		std::cout << date << " => " << value << " = " << std::fixed
+		<< std::setprecision(PRECISION) << value * it->second << std::endl;
+	}
 	else 
-		std::cerr << "Error: exact date not found - searched date: " << date << std::endl;
+	{
+		it = _database.upper_bound(date);
+		if (it != _database.begin())
+		{
+			--it;
+			std::cout << date << " => " << value << " = " << std::fixed
+			<< std::setprecision(PRECISION) << value * it->second << std::endl;
+		}
+		else
+			std::cerr << "Error: no previous date found - searched date: " << date << std::endl;
+	}
 	return (0);
 }
 

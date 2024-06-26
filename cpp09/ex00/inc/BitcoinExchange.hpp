@@ -6,7 +6,7 @@
 /*   By: vbartos <vbartos@student.42prague.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 21:49:59 by vbartos           #+#    #+#             */
-/*   Updated: 2024/06/26 12:24:04 by vbartos          ###   ########.fr       */
+/*   Updated: 2024/06/26 14:11:08 by vbartos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,9 @@
 #include <string>
 #include <map>
 #include <cstdlib>
+#include <iomanip>
+
+#define PRECISION 2
 
 class BitcoinExchange
 {
