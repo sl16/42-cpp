@@ -6,7 +6,7 @@
 /*   By: vbartos <vbartos@student.42prague.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 14:12:19 by vbartos           #+#    #+#             */
-/*   Updated: 2024/06/25 14:18:45 by vbartos          ###   ########.fr       */
+/*   Updated: 2024/06/26 09:43:17 by vbartos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int main(int argc, char **argv)
 	
 	BitcoinExchange exchange;
 	exchange.parseDatabase(database);
-	// exchange.lookUp();
+	exchange.lookUp(input);
 
 	return (0);
 }

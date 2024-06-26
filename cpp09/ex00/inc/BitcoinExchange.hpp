@@ -6,7 +6,7 @@
 /*   By: vbartos <vbartos@student.42prague.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 21:49:59 by vbartos           #+#    #+#             */
-/*   Updated: 2024/06/25 14:26:06 by vbartos          ###   ########.fr       */
+/*   Updated: 2024/06/26 09:42:31 by vbartos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ class BitcoinExchange
 		BitcoinExchange& operator=(const BitcoinExchange& other);
 
 		int		parseDatabase(std::ifstream& file);
-		void	processLine(const std::string& line);
 		void	lookUp(std::ifstream& file);
 
 	private:
