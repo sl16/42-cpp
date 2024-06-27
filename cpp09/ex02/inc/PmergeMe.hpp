@@ -1,0 +1,41 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   PmergeMe.hpp                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vbartos <vbartos@student.42prague.com>     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/06/27 09:25:30 by vbartos           #+#    #+#             */
+/*   Updated: 2024/06/27 11:52:28 by vbartos          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#pragma once
+
+#include <iostream>
+#include <sstream>
+#include <string>
+#include <deque>
+#include <vector>
+#include <list>
+#include <limits>
+#include <cstdio>
+#include <algorithm>
+
+class PmergeMe
+{
+	public:
+		PmergeMe();
+		~PmergeMe();
+		PmergeMe(const PmergeMe& other);
+		const PmergeMe& operator=(const PmergeMe& other);
+
+		void parseInput(char **argv);
+		void printBefore();
+		void sortDeque();
+
+	private:
+		std::deque<unsigned int> _dq;
+		std::list<unsigned int> _ll;
+		
+};
