@@ -6,9 +6,13 @@
 /*   By: vbartos <vbartos@student.42prague.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 15:25:32 by vbartos           #+#    #+#             */
-/*   Updated: 2024/06/28 11:14:46 by vbartos          ###   ########.fr       */
+/*   Updated: 2024/06/28 15:40:36 by vbartos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+
+// https://codereview.stackexchange.com/questions/116367/ford-johnson-merge-insertion-sort
+// https://en.wikipedia.org/wiki/Merge-insertion_sort
 
 
 #include "../inc/PmergeMe.hpp"
@@ -49,10 +53,10 @@ void PmergeMe::parseInput(char **argv)
 		iss >> num;
 
 		if (iss.fail() || iss.peek() != EOF || num < 0)
-			throw std::invalid_argument("Error: wrong input (unsigned integers only");
+			throw std::invalid_argument("Error: wrong input (unsigned integers only)");
 
 		if (num > std::numeric_limits<unsigned int>::max())
-			throw std::invalid_argument("Error: wrong input (integers must be less than MAXUINT");
+			throw std::invalid_argument("Error: wrong input (integers must be less than MAXUINT)");
 		
 		num = static_cast<unsigned int>(num);
 
@@ -61,14 +65,14 @@ void PmergeMe::parseInput(char **argv)
 	}
 }
 
-void PmergeMe::printBefore()
+void PmergeMe::print()
 {
-	std::cout << "Deque before : ";
+	std::cout << "Deque: ";
 	for (std::deque<unsigned int>::iterator it = _dq.begin(); it != _dq.end(); it++)
 		std::cout << *it << " ";
 	std::cout << std::endl;
 
-	std::cout << "List before : ";
+	std::cout << "List: ";
 	for (std::list<unsigned int>::iterator it = _ll.begin(); it != _ll.end(); it++)
 		std::cout << *it << " ";
 	std::cout << std::endl;
@@ -96,12 +100,23 @@ void PmergeMe::sortDeque()
 	}
 	std::sort(larger.begin(), larger.end());
 
-	// Step 3: Insert the smaller element of the first pair at the start of the sorted list, insert all larger pair members
+	// Step 3: Insert at the start of [sorted] the element that was paired with the first and smallest element of [larger]
 	std::deque<unsigned int> sorted;
-	sorted.push_front(pairs[0].first);
+
+	unsigned int min_larger = larger[0];
+	std::vector<std::pair<unsigned int, unsigned int> >::iterator it;
+	for (it = pairs.begin(); it != pairs.end(); ++it)
+	{
+		if (std::max(it->first, it->second) == min_larger)
+			break;
+	}
+	if (it != pairs.end())
+		sorted.push_front(std::min(it->first, it->second));
+
+	// Step 4: Insert all elements from 'larger' into 'sorted'
 	sorted.insert(sorted.end(), larger.begin(), larger.end());
 
-	// Step 4: Insert the remaining elements into the sorted list
+	// Step 5: Insert the remaining elements into the sorted list
 	for (std::vector<std::pair<unsigned int, unsigned int> >::iterator it = pairs.begin() + 1; it != pairs.end(); ++it)
 	{
 		std::deque<unsigned int>::iterator pos = std::lower_bound(sorted.begin(), sorted.end(), it->first);

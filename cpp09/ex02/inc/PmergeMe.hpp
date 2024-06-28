@@ -31,7 +31,7 @@ class PmergeMe
 		const PmergeMe& operator=(const PmergeMe& other);
 
 		void parseInput(char **argv);
-		void printBefore();
+		void print();
 		void sortDeque();
 
 	private:

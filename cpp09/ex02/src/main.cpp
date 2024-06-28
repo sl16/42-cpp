@@ -6,7 +6,7 @@
 /*   By: vbartos <vbartos@student.42prague.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 14:12:19 by vbartos           #+#    #+#             */
-/*   Updated: 2024/06/28 11:11:37 by vbartos          ###   ########.fr       */
+/*   Updated: 2024/06/28 13:53:55 by vbartos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,10 @@ int main(int argc, char **argv)
 		PmergeMe algo;
 		
 		algo.parseInput(argv);
-		algo.printBefore();
+		algo.print();
 		algo.sortDeque();
 		std::cout << "----------" << std::endl;
-		algo.printBefore();
+		algo.print();
 	}
 	catch (const std::exception& e)
 	{
