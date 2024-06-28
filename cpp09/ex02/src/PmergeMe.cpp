@@ -6,7 +6,7 @@
 /*   By: vbartos <vbartos@student.42prague.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 15:25:32 by vbartos           #+#    #+#             */
-/*   Updated: 2024/06/27 17:11:32 by vbartos          ###   ########.fr       */
+/*   Updated: 2024/06/28 11:14:46 by vbartos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,15 +76,39 @@ void PmergeMe::printBefore()
 
 void PmergeMe::sortDeque()
 {
-	// Step 1: Split the deque into pairs
-	std::vector<std::pair<unsigned int, unsigned int>> pairs;
-	for (int i = 0; i < _dq.size(); i += 2)
+	// Step 1: Split the container into pairs
+	std::vector<std::pair<unsigned int, unsigned int> > pairs;
+	for (size_t i = 0; i < _dq.size(); i += 2)
 	{
 		if (i + 1 < _dq.size())
 			pairs.push_back(std::make_pair(_dq[i], _dq[i + 1]));
 		else
 			pairs.push_back(std::make_pair(_dq[i], std::numeric_limits<unsigned int>::max()));
 	}
+
+	// Step 2: Compare each pair and find the larger elements, store these in a sorted vector (::sort uses IntroSort)
+	std::vector<unsigned int> larger;
+	for (std::vector<std::pair<unsigned int, unsigned int> >::iterator it = pairs.begin(); it != pairs.end(); ++it)
+	{
+		if (it->first > it->second)
+			std::swap(it->first, it->second);
+		larger.push_back(it->second);
+	}
+	std::sort(larger.begin(), larger.end());
+
+	// Step 3: Insert the smaller element of the first pair at the start of the sorted list, insert all larger pair members
+	std::deque<unsigned int> sorted;
+	sorted.push_front(pairs[0].first);
+	sorted.insert(sorted.end(), larger.begin(), larger.end());
+
+	// Step 4: Insert the remaining elements into the sorted list
+	for (std::vector<std::pair<unsigned int, unsigned int> >::iterator it = pairs.begin() + 1; it != pairs.end(); ++it)
+	{
+		std::deque<unsigned int>::iterator pos = std::lower_bound(sorted.begin(), sorted.end(), it->first);
+		sorted.insert(pos, it->first);
+	}
+
+	_dq = sorted;
 }
 
 

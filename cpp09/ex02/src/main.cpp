@@ -6,7 +6,7 @@
 /*   By: vbartos <vbartos@student.42prague.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 14:12:19 by vbartos           #+#    #+#             */
-/*   Updated: 2024/06/27 16:36:52 by vbartos          ###   ########.fr       */
+/*   Updated: 2024/06/28 11:11:37 by vbartos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ int main(int argc, char **argv)
 		algo.parseInput(argv);
 		algo.printBefore();
 		algo.sortDeque();
+		std::cout << "----------" << std::endl;
+		algo.printBefore();
 	}
 	catch (const std::exception& e)
 	{
