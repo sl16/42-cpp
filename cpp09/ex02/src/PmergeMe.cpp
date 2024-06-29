@@ -6,7 +6,7 @@
 /*   By: vbartos <vbartos@student.42prague.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 15:25:32 by vbartos           #+#    #+#             */
-/*   Updated: 2024/06/28 15:40:36 by vbartos          ###   ########.fr       */
+/*   Updated: 2024/06/29 14:57:41 by vbartos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,17 +65,48 @@ void PmergeMe::parseInput(char **argv)
 	}
 }
 
-void PmergeMe::print()
+void PmergeMe::printOrder(std::string when)
 {
-	std::cout << "Deque: ";
+	if (when == "before")
+		std::cout << "Before:\t";
+	else
+		std::cout << "After:\t";
 	for (std::deque<unsigned int>::iterator it = _dq.begin(); it != _dq.end(); it++)
 		std::cout << *it << " ";
 	std::cout << std::endl;
+}
 
-	std::cout << "List: ";
-	for (std::list<unsigned int>::iterator it = _ll.begin(); it != _ll.end(); it++)
-		std::cout << *it << " ";
-	std::cout << std::endl;
+void PmergeMe::printTime(std::clock_t& start, std::clock_t& end)
+{
+	double duration;
+	
+	duration = (end - start) * 1000000.0 / static_cast<double>(CLOCKS_PER_SEC);
+	std::cout << "Time taken : " << duration << " us\n";}
+
+static void quickSort(std::vector<unsigned int>& arr, int left, int right)
+{
+	int i = left, j = right;
+	unsigned int pivot = arr[(left + right) / 2];
+
+	// Partition
+	while (i <= j)
+	{
+		while (arr[i] < pivot)
+			i++;
+		while (arr[j] > pivot)
+			j--;
+		if (i <= j) {
+			std::swap(arr[i], arr[j]);
+			i++;
+			j--;
+		}
+	}
+
+	// Recursion
+	if (left < j)
+		quickSort(arr, left, j);
+	if (i < right)
+		quickSort(arr, i, right);
 }
 
 void PmergeMe::sortDeque()
@@ -90,7 +121,7 @@ void PmergeMe::sortDeque()
 			pairs.push_back(std::make_pair(_dq[i], std::numeric_limits<unsigned int>::max()));
 	}
 
-	// Step 2: Compare each pair and find the larger elements, store these in a sorted vector (::sort uses IntroSort)
+	// Step 2: Compare each pair and find the larger elements, store these in a sorted vector
 	std::vector<unsigned int> larger;
 	for (std::vector<std::pair<unsigned int, unsigned int> >::iterator it = pairs.begin(); it != pairs.end(); ++it)
 	{
@@ -98,7 +129,7 @@ void PmergeMe::sortDeque()
 			std::swap(it->first, it->second);
 		larger.push_back(it->second);
 	}
-	std::sort(larger.begin(), larger.end());
+	quickSort(larger, 0, larger.size() - 1);
 
 	// Step 3: Insert at the start of [sorted] the element that was paired with the first and smallest element of [larger]
 	std::deque<unsigned int> sorted;
@@ -125,14 +156,3 @@ void PmergeMe::sortDeque()
 
 	_dq = sorted;
 }
-
-
-// Split the list into pairs. Create a new list where each element is a pair of elements from the original list. If the original list has an odd number of elements, the last pair should contain the last element and a sentinel value that is greater than any possible value in the list.
-
-// Sort each pair and find the larger elements. For each pair, if the first element is greater than the second, swap them. Then, add the second element (which is now the larger one) to a new list of larger elements.
-
-// Recursively sort the larger elements. Use a recursive function to sort the list of larger elements. This will be the first part of the sorted list.
-
-// Insert the smaller element of the first pair at the start of the sorted list. The smaller element of the first pair is the element that was paired with the first and smallest element of the sorted list.
-
-// Insert the remaining elements into the sorted list. The remaining elements are the smaller elements of the pairs, excluding the first one. Insert them into the sorted list one at a time, using binary search to find the correct position for each element. The insertion order is determined by a specially chosen sequence.

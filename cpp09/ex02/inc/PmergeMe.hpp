@@ -13,6 +13,7 @@
 #pragma once
 
 #include <iostream>
+#include <iomanip>
 #include <sstream>
 #include <string>
 #include <deque>
@@ -21,6 +22,7 @@
 #include <limits>
 #include <cstdio>
 #include <algorithm>
+#include <ctime>
 
 class PmergeMe
 {
@@ -31,7 +33,8 @@ class PmergeMe
 		const PmergeMe& operator=(const PmergeMe& other);
 
 		void parseInput(char **argv);
-		void print();
+		void printOrder(std::string when);
+		void printTime(std::clock_t& start, std::clock_t& end);
 		void sortDeque();
 
 	private:
