@@ -6,7 +6,7 @@
 /*   By: vbartos <vbartos@student.42prague.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 15:25:32 by vbartos           #+#    #+#             */
-/*   Updated: 2024/07/01 21:34:56 by vbartos          ###   ########.fr       */
+/*   Updated: 2024/07/11 15:38:49 by vbartos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 
 PmergeMe::PmergeMe()
 {
-
+	_odd = false;
 }
 
 PmergeMe::~PmergeMe()
@@ -31,6 +31,7 @@ PmergeMe::PmergeMe(const PmergeMe& other)
 {
 	_dq = other._dq;
 	_ll = other._ll;
+	_odd = false;
 }
 
 const PmergeMe& PmergeMe::operator=(const PmergeMe& other)
@@ -39,6 +40,7 @@ const PmergeMe& PmergeMe::operator=(const PmergeMe& other)
 	{
 		_dq = other._dq;
 		_ll = other._ll;
+		_odd = false;
 	}
 
 	return (*this);
@@ -118,7 +120,10 @@ void PmergeMe::sortDeque()
 		if (i + 1 < _dq.size())
 			pairs.push_back(std::make_pair(_dq[i], _dq[i + 1]));
 		else
+		{
 			pairs.push_back(std::make_pair(_dq[i], std::numeric_limits<unsigned int>::max()));
+			_odd = true;
+		}
 	}
 
 	// Step 2: Compare each pair and find the larger elements, store these in a sorted vector
@@ -153,6 +158,8 @@ void PmergeMe::sortDeque()
 		std::deque<unsigned int>::iterator pos = std::lower_bound(sorted.begin(), sorted.end(), it->first);
 		sorted.insert(pos, it->first);
 	}
+	if (_odd == true)
+		sorted.erase(sorted.end() - 1);
 
 	_dq = sorted;
 }

@@ -38,7 +38,8 @@ class PmergeMe
 		void sortDeque();
 
 	private:
-		std::deque<unsigned int> _dq;
-		std::list<unsigned int> _ll;
+		std::deque<unsigned int>	_dq;
+		std::list<unsigned int>		_ll;
+		bool						_odd;
 		
 };
