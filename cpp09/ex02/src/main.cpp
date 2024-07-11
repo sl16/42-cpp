@@ -6,7 +6,7 @@
 /*   By: vbartos <vbartos@student.42prague.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 14:12:19 by vbartos           #+#    #+#             */
-/*   Updated: 2024/06/29 14:48:40 by vbartos          ###   ########.fr       */
+/*   Updated: 2024/07/11 18:36:39 by vbartos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,14 +23,17 @@ int main(int argc, char **argv)
 		
 		algo.parseInput(argv);
 		algo.printOrder("before");
-		std::clock_t start = std::clock();
+		std::clock_t start_deque = std::clock();
 		algo.sortDeque();
-		std::clock_t end = std::clock();
+		std::clock_t end_deque = std::clock();
+		std::clock_t start_vect = std::clock();
+		algo.sortVector();
+		std::clock_t end_vect = std::clock();
 		std::cout << "----------" << std::endl;
 		algo.printOrder("after");
 		std::cout << "----------" << std::endl;
-		algo.printTime(start, end);
-		
+		algo.printTime(start_deque, end_deque);
+		algo.printTime(start_vect, end_vect);
 	}
 	catch (const std::exception& e)
 	{

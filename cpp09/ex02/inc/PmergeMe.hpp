@@ -36,10 +36,11 @@ class PmergeMe
 		void printOrder(std::string when);
 		void printTime(std::clock_t& start, std::clock_t& end);
 		void sortDeque();
+		void sortVector();
 
 	private:
 		std::deque<unsigned int>	_dq;
-		std::list<unsigned int>		_ll;
+		std::vector<unsigned int>	_vc;
 		bool						_odd;
 		
 };
