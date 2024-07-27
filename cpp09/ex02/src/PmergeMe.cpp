@@ -6,15 +6,16 @@
 /*   By: vbartos <vbartos@student.42prague.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 15:25:32 by vbartos           #+#    #+#             */
-/*   Updated: 2024/07/11 18:36:17 by vbartos          ###   ########.fr       */
+/*   Updated: 2024/07/27 14:30:31 by vbartos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
+// RESOURCES
 // https://codereview.stackexchange.com/questions/116367/ford-johnson-merge-insertion-sort
 // https://en.wikipedia.org/wiki/Merge-insertion_sort
 // https://medium.com/@sofia.huppertz/cpp09-school42-1efa42df7803
 // https://www.linkedin.com/posts/nerraou_ford-johnson-merge-insertion-sort-activity-7076577075712675840-AJ1l
+// https://github.com/andreaulicna/42_CPP_modules/tree/main/CPP_Module_09/ex02 (thx for saving my ass)
 
 
 #include "../inc/PmergeMe.hpp"
@@ -80,12 +81,12 @@ void PmergeMe::printOrder(std::string when)
 	std::cout << std::endl;
 }
 
-void PmergeMe::printTime(std::clock_t& start, std::clock_t& end)
+void PmergeMe::printTime(std::clock_t& start, std::clock_t& end, std::string type, int argc)
 {
 	double duration;
 	
 	duration = (end - start) * 1000000.0 / static_cast<double>(CLOCKS_PER_SEC);
-	std::cout << "Time taken : " << duration << " us\n";}
+	std::cout << "Time taken for " << type << " with " << argc - 1 << " elements: " << duration << " us\n";}
 
 static void quickSort(std::vector<unsigned int>& arr, int left, int right)
 {
@@ -113,31 +114,28 @@ static void quickSort(std::vector<unsigned int>& arr, int left, int right)
 		quickSort(arr, i, right);
 }
 
+static unsigned int	calcJacobsthalNumber(unsigned int i)
+{
+	if (i == 0 || i == 1)
+		return (i);
+	return (calcJacobsthalNumber(i - 1) + 2 * calcJacobsthalNumber(i - 2));
+
+}
+
 static std::vector<unsigned int> generateJacobsthalNumbers(size_t count)
 {
-	std::vector<unsigned int> jacobsthalNumbers;
-	if (count == 0) return jacobsthalNumbers;
+    std::vector<unsigned int> jacobsthalNumbers;
+    unsigned int	i;
 
-	// Initialize the first two Jacobsthal numbers (starting from 3 since we pushed the first one already)
-	unsigned int jacobsthalPrevious = 3; 
-	unsigned int jacobsthalCurrent = 5;
-
-	jacobsthalNumbers.push_back(jacobsthalPrevious);
-	if (count == 1) return jacobsthalNumbers;
-
-	jacobsthalNumbers.push_back(jacobsthalCurrent);
-	if (count == 2) return jacobsthalNumbers;
-
-	// Generate the next Jacobsthal numbers
-	for (size_t i = 2; i < count; ++i)
+	i = 3;
+	while (count > calcJacobsthalNumber(i))
 	{
-		unsigned int temp = jacobsthalCurrent;
-		jacobsthalCurrent = jacobsthalCurrent + 2 * jacobsthalPrevious;
-		jacobsthalPrevious = temp;
-		jacobsthalNumbers.push_back(jacobsthalCurrent);
+		jacobsthalNumbers.push_back(calcJacobsthalNumber(i));
+		i++;
 	}
+	jacobsthalNumbers.push_back(calcJacobsthalNumber(i));
 
-	return (jacobsthalNumbers);
+    return jacobsthalNumbers;
 }
 
 static std::vector<unsigned int> generateInsertionSequence(std::vector<unsigned int>& jacobsthalSequence)
@@ -184,6 +182,13 @@ void PmergeMe::sortDeque()
 	}
 	quickSort(larger, 0, larger.size() - 1);
 
+	// // DEBUG
+	// std::cout << "LARGER: ";
+	// for(std::vector<unsigned int>::iterator printIt = larger.begin(); printIt != larger.end(); printIt++)
+	// 	std::cout << *printIt << " ";
+	// std::cout << std::endl;
+	// // END DEBUG
+
 	// Step 3: Insert at the start of [sorted] the element that was paired with the first and smallest element of [larger]
 	std::deque<unsigned int> sorted;
 
@@ -194,8 +199,9 @@ void PmergeMe::sortDeque()
 		if (std::max(it->first, it->second) == min_larger)
 			break;
 	}
+	unsigned int manually_inserted = std::min(it->first, it->second);
 	if (it != pairs.end())
-		sorted.push_front(std::min(it->first, it->second));
+		sorted.push_front(manually_inserted);
 
 	// Step 4: Insert all elements from 'larger' into 'sorted'
 	sorted.insert(sorted.end(), larger.begin(), larger.end());
@@ -204,12 +210,32 @@ void PmergeMe::sortDeque()
 	std::vector<unsigned int> jacobsthalSeq = generateJacobsthalNumbers(pairs.size());
 	std::vector<unsigned int>::iterator jacobIt;
 
+	// // DEBUG
+	// std::cout << "JACOBSTHAL SEQUENCE: ";
+	// for (std::vector<unsigned int>::iterator seqIt = jacobsthalSeq.begin(); seqIt != jacobsthalSeq.end(); ++seqIt)
+	// 	std::cout << *seqIt << " ";
+	// std::cout << std::endl;
+	// // END DEBUG
+
 	// Step 6: Generate insert sequence, decrease the values by one for correct index access
 	std::vector<unsigned int> insertionSeq = generateInsertionSequence(jacobsthalSeq);
-	std::vector<unsigned int>::iterator seqIt;
+
+	// // DEBUG
+	// std::cout << "INSERTION SEQUENCE: ";
+	// for (std::vector<unsigned int>::iterator seqIt = insertionSeq.begin(); seqIt != insertionSeq.end(); ++seqIt)
+	// 	std::cout << *seqIt << " ";
+	// std::cout << std::endl;
+	// // END DEBUG
 
 	for(size_t i = 0; i < insertionSeq.size(); i++)
 		insertionSeq[i] -= 1;
+
+	// // DEBUG
+	// std::cout << "SMALLER: ";
+	// for (std::vector<std::pair<unsigned int, unsigned int> >::iterator it = pairs.begin(); it != pairs.end(); ++it)
+	// 	std::cout << it->first << " ";
+	// std::cout << std::endl;
+	// // END DEBUG
 
 	// Step 7: Insert the remaining elements into the sorted list using the insertion sequence
 	for (size_t i = 0; i < insertionSeq.size(); i++)
@@ -221,7 +247,9 @@ void PmergeMe::sortDeque()
 		index = insertionSeq[i];
 		if (index < pairs.size())
 		{
-			num = pairs[index].second;
+			num = pairs[index].first;
+			if (num == manually_inserted)
+				continue;
 			it = std::upper_bound(sorted.begin(), sorted.end(), num);
 			sorted.insert(it, num);
 		}
@@ -230,6 +258,7 @@ void PmergeMe::sortDeque()
 	{
 		std::deque<unsigned int>::iterator it;
 		it = std::upper_bound(sorted.begin(), sorted.end(), oddNum);
+		// std::cout << "oddNum is: " << oddNum << std::endl;
 		sorted.insert(it, oddNum);
 	}
 
@@ -273,8 +302,9 @@ void PmergeMe::sortVector()
 		if (std::max(it->first, it->second) == min_larger)
 			break;
 	}
+	unsigned int manually_inserted = std::min(it->first, it->second);
 	if (it != pairs.end())
-		sorted.insert(sorted.begin(), std::min(it->first, it->second));
+		sorted.insert(sorted.begin(), manually_inserted);
 
 	// Step 4: Insert all elements from 'larger' into 'sorted'
 	sorted.insert(sorted.end(), larger.begin(), larger.end());
@@ -300,7 +330,9 @@ void PmergeMe::sortVector()
 		index = insertionSeq[i];
 		if (index < pairs.size())
 		{
-			num = pairs[index].second;
+			num = pairs[index].first;
+			if (num == manually_inserted)
+				continue;
 			it = std::upper_bound(sorted.begin(), sorted.end(), num);
 			sorted.insert(it, num);
 		}

@@ -6,7 +6,7 @@
 #    By: vbartos <vbartos@student.42prague.com>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/19 23:00:29 by vbartos           #+#    #+#              #
-#    Updated: 2024/06/27 16:25:10 by vbartos          ###   ########.fr        #
+#    Updated: 2024/07/27 12:55:52 by vbartos          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,6 +25,7 @@ NAME			= PmergeMe
 
 CC				= c++
 CFLAGS			= -Wall -Wextra -Werror -g -std=c++98
+# CFLAGS		+= -pg
 RM				= rm -rf
 
 # SOURCE FILES ----------------------------- #

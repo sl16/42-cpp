@@ -34,7 +34,7 @@ class PmergeMe
 
 		void parseInput(char **argv);
 		void printOrder(std::string when);
-		void printTime(std::clock_t& start, std::clock_t& end);
+		void printTime(std::clock_t& start, std::clock_t& end, std::string type, int argc);
 		void sortDeque();
 		void sortVector();
 
