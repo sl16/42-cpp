@@ -6,7 +6,7 @@
 /*   By: vbartos <vbartos@student.42prague.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 09:25:28 by vbartos           #+#    #+#             */
-/*   Updated: 2024/06/27 12:05:59 by vbartos          ###   ########.fr       */
+/*   Updated: 2024/07/29 14:49:25 by vbartos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,5 +99,7 @@ void RPN::calculateRes(std::string& input)
 			}
 		}
 	}
+	if (_res.size() != 1)
+				throw std::runtime_error("Error: Invalid input");
 	std::cout << "Result: " << _res.top() << std::endl;
 }
